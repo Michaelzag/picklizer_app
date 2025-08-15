@@ -57,6 +57,7 @@ class FacilityDetailScreen extends ConsumerWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
+        heroTag: "facility_detail_fab",
         onPressed: () {
           Navigator.push(
             context,

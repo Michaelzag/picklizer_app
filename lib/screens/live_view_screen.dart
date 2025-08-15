@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/enhanced_providers.dart';
 import '../models/court.dart';
 import '../models/session.dart';
-import 'walkthrough/walkthrough_coordinator.dart';
+import 'walkthrough/accordion_walkthrough_coordinator.dart';
 
 class LiveViewScreen extends ConsumerWidget {
   const LiveViewScreen({super.key});
@@ -243,7 +243,7 @@ class LiveViewScreen extends ConsumerWidget {
   void _startNewSession(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => const WalkthroughCoordinator(),
+        builder: (context) => const AccordionWalkthroughCoordinator(),
       ),
     );
   }
@@ -251,7 +251,7 @@ class LiveViewScreen extends ConsumerWidget {
   void _setupSession(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => const WalkthroughCoordinator(),
+        builder: (context) => const AccordionWalkthroughCoordinator(),
       ),
     );
   }

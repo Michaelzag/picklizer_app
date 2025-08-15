@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/enhanced_providers.dart';
-import 'walkthrough/walkthrough_coordinator.dart';
+import 'walkthrough/accordion_walkthrough_coordinator.dart';
 
 /// Simplified dashboard that works with enhanced providers
 /// Shows current session status and provides navigation to main features
@@ -218,7 +218,7 @@ class SimpleDashboardScreen extends ConsumerWidget {
   void _startNewSession(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => const WalkthroughCoordinator(),
+        builder: (context) => const AccordionWalkthroughCoordinator(),
       ),
     );
   }

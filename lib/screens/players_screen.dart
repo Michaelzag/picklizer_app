@@ -29,6 +29,7 @@ class PlayersScreen extends ConsumerWidget {
           ? _buildEmptyState(context)
           : _buildPlayersList(context, ref, players, currentSession, checkIns),
       floatingActionButton: FloatingActionButton.extended(
+        heroTag: "players_fab",
         onPressed: () => _navigateToAddPlayer(context),
         icon: const Icon(Icons.person_add),
         label: const Text('Add Player'),

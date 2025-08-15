@@ -6,7 +6,7 @@ import 'on_deck_screen.dart';
 import 'facilities_screen.dart';
 import 'players_screen.dart';
 import 'sessions_screen.dart';
-import 'walkthrough/walkthrough_coordinator.dart';
+import 'walkthrough/accordion_walkthrough_coordinator.dart';
 import 'settings_screen.dart';
 
 class MainNavigationScreen extends ConsumerStatefulWidget {
@@ -76,7 +76,7 @@ class _MainNavigationScreenState extends ConsumerState<MainNavigationScreen> {
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => const WalkthroughCoordinator(),
+                  builder: (context) => const AccordionWalkthroughCoordinator(),
                 ),
               );
             },

@@ -28,6 +28,7 @@ class FacilitiesScreen extends ConsumerWidget {
           ? _buildEmptyState(context)
           : _buildFacilitiesList(context, ref, facilities),
       floatingActionButton: FloatingActionButton.extended(
+        heroTag: "facilities_fab",
         onPressed: () => _navigateToAddFacility(context),
         icon: const Icon(Icons.add),
         label: const Text('Add Facility'),
