@@ -137,3 +137,10 @@ and then the accordian eleemnts below that.
 
 
 
+### 9 Walk Through Revisisons - Again
+
+Ok, so this walkthrough should be used when creating a session, not just the first time an app is launched. We need to properly code each ui element to select. but courts are locked to a facility. So if facilities exist, we should select from a drop down or create a new one. If a new facility is created, we need to add courts. if the facility already exists, we should review the courts. game modes should not intrinsicly be linked to courts, we can show the last game mode used on that court, but the user should be able to change the game mode from a drop down. Even mid session, sometimes things change. 
+Players are universal, sometimes players play at the same spots on different days. 
+Do you know what I mean by these changes? can you reason the implicatinos of this new direction?
+
+Also it looks like the other change of having players created before a session was not implemented yet. please review the previous changes in this documnet. 

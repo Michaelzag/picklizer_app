@@ -102,4 +102,100 @@ class AppLocalizationsJa extends AppLocalizations {
   String stepXOfY(int step, int total) {
     return 'ステップ $step / $total';
   }
+
+  @override
+  String get noLocation => '場所なし';
+
+  @override
+  String courtCount(int count) {
+    return '$countコート';
+  }
+
+  @override
+  String courtsCount(int count) {
+    return '$countコート';
+  }
+
+  @override
+  String playerCount(int count) {
+    return '$countプレイヤー';
+  }
+
+  @override
+  String playersCount(int count) {
+    return '$countプレイヤー';
+  }
+
+  @override
+  String morePlayersIndicator(int count) {
+    return ' +$count人';
+  }
+
+  @override
+  String get sessionActive => 'セッション実行中';
+
+  @override
+  String startedAt(String time) {
+    return '$timeに開始';
+  }
+
+  @override
+  String get createYourFacility => '施設を作成してください';
+
+  @override
+  String get facilityDescription => '施設はピックルボールをプレイする場所を表します。';
+
+  @override
+  String get setupCourts => 'コートをセットアップ';
+
+  @override
+  String courtsDescription(String facilityName) {
+    return '$facilityNameに少なくとも1つのコートを追加してください。';
+  }
+
+  @override
+  String get addPlayers => 'プレイヤーを追加';
+
+  @override
+  String get playersDescription => 'プレイを開始するために少なくとも2人のプレイヤーを追加してください。';
+
+  @override
+  String get startYourSession => 'セッションを開始';
+
+  @override
+  String sessionDescription(
+    String facilityName,
+    int playerCount,
+    int courtCount,
+    String courtPlural,
+  ) {
+    return '$facilityNameで$playerCount人のプレイヤーと$courtCountコート$courtPluralでプレイを開始する準備ができました。';
+  }
+
+  @override
+  String get startSession => 'セッション開始';
+
+  @override
+  String get allSet => '準備完了！';
+
+  @override
+  String get completedDescription =>
+      'セッションがアクティブになり、プレイの準備ができました。プレイヤーはキューに参加できます。';
+
+  @override
+  String get goToLiveView => 'ライブビューに移動';
+
+  @override
+  String get errorLoadingCourts => 'コートの読み込みエラー';
+
+  @override
+  String get needAtLeastTwoPlayers => 'セッションを開始するには少なくとも2人のプレイヤーが必要です';
+
+  @override
+  String get sessionStartedSuccessfully => 'セッションが正常に開始されました！';
+
+  @override
+  String errorStartingSession(String error) {
+    return 'セッション開始エラー: $error';
+  }
 }

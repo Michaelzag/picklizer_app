@@ -102,4 +102,103 @@ class AppLocalizationsEs extends AppLocalizations {
   String stepXOfY(int step, int total) {
     return 'Paso $step de $total';
   }
+
+  @override
+  String get noLocation => 'Sin ubicación';
+
+  @override
+  String courtCount(int count) {
+    return '$count Cancha';
+  }
+
+  @override
+  String courtsCount(int count) {
+    return '$count Canchas';
+  }
+
+  @override
+  String playerCount(int count) {
+    return '$count Jugador';
+  }
+
+  @override
+  String playersCount(int count) {
+    return '$count Jugadores';
+  }
+
+  @override
+  String morePlayersIndicator(int count) {
+    return ' +$count más';
+  }
+
+  @override
+  String get sessionActive => 'Sesión Activa';
+
+  @override
+  String startedAt(String time) {
+    return 'Iniciada a las $time';
+  }
+
+  @override
+  String get createYourFacility => 'Crear Tu Instalación';
+
+  @override
+  String get facilityDescription =>
+      'Una instalación representa el lugar donde juegas pickleball.';
+
+  @override
+  String get setupCourts => 'Configurar Canchas';
+
+  @override
+  String courtsDescription(String facilityName) {
+    return 'Agrega al menos una cancha a $facilityName.';
+  }
+
+  @override
+  String get addPlayers => 'Agregar Jugadores';
+
+  @override
+  String get playersDescription =>
+      'Agrega al menos 2 jugadores para comenzar a jugar.';
+
+  @override
+  String get startYourSession => 'Iniciar Tu Sesión';
+
+  @override
+  String sessionDescription(
+    String facilityName,
+    int playerCount,
+    int courtCount,
+    String courtPlural,
+  ) {
+    return 'Listo para comenzar a jugar en $facilityName con $playerCount jugadores y $courtCount cancha$courtPlural.';
+  }
+
+  @override
+  String get startSession => 'Iniciar Sesión';
+
+  @override
+  String get allSet => '¡Todo Listo!';
+
+  @override
+  String get completedDescription =>
+      'Tu sesión está activa y lista para jugar. Los jugadores ahora pueden unirse a la cola.';
+
+  @override
+  String get goToLiveView => 'Ir a Vista en Vivo';
+
+  @override
+  String get errorLoadingCourts => 'Error cargando canchas';
+
+  @override
+  String get needAtLeastTwoPlayers =>
+      'Se necesitan al menos 2 jugadores para iniciar una sesión';
+
+  @override
+  String get sessionStartedSuccessfully => '¡Sesión iniciada exitosamente!';
+
+  @override
+  String errorStartingSession(String error) {
+    return 'Error iniciando sesión: $error';
+  }
 }

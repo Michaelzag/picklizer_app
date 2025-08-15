@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../providers/enhanced_providers.dart';
 import '../providers/message_provider.dart';
 import '../widgets/common/global_message_widget.dart';
@@ -31,7 +32,7 @@ class _ProgressiveWalkthroughScreenState extends ConsumerState<ProgressiveWalkth
     
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pickleizer'),
+        title: Text(AppLocalizations.of(context)!.appTitle),
         centerTitle: true,
       ),
       body: Stack(
@@ -105,7 +106,7 @@ class _ProgressiveWalkthroughScreenState extends ConsumerState<ProgressiveWalkth
             _buildCompletedStepHeader(
               icon: Icons.business,
               title: facilities.first.name,
-              subtitle: facilities.first.location ?? 'No location',
+              subtitle: facilities.first.location ?? AppLocalizations.of(context)!.noLocation,
               onTap: () => _editStep(0),
             ),
           
@@ -118,7 +119,9 @@ class _ProgressiveWalkthroughScreenState extends ConsumerState<ProgressiveWalkth
                 return courtsAsync.when(
                   data: (courts) => _buildCompletedStepHeader(
                     icon: Icons.sports_tennis,
-                    title: '${courts.length} Court${courts.length != 1 ? 's' : ''}',
+                    title: courts.length == 1
+                        ? AppLocalizations.of(context)!.courtCount(courts.length)
+                        : AppLocalizations.of(context)!.courtsCount(courts.length),
                     subtitle: courts.map((c) => c.name).join(', '),
                     onTap: () => _editStep(1),
                   ),
@@ -132,9 +135,11 @@ class _ProgressiveWalkthroughScreenState extends ConsumerState<ProgressiveWalkth
           if (_currentStep > 2 && players.length >= 2)
             _buildCompletedStepHeader(
               icon: Icons.people,
-              title: '${players.length} Player${players.length != 1 ? 's' : ''}',
-              subtitle: players.take(3).map((p) => p.name).join(', ') + 
-                       (players.length > 3 ? ' +${players.length - 3} more' : ''),
+              title: players.length == 1
+                  ? AppLocalizations.of(context)!.playerCount(players.length)
+                  : AppLocalizations.of(context)!.playersCount(players.length),
+              subtitle: players.take(3).map((p) => p.name).join(', ') +
+                       (players.length > 3 ? AppLocalizations.of(context)!.morePlayersIndicator(players.length - 3) : ''),
               onTap: () => _editStep(2),
             ),
           
@@ -149,8 +154,8 @@ class _ProgressiveWalkthroughScreenState extends ConsumerState<ProgressiveWalkth
                 
                 return _buildCompletedStepHeader(
                   icon: Icons.play_circle,
-                  title: 'Session Active',
-                  subtitle: 'Started at $timeStr',
+                  title: AppLocalizations.of(context)!.sessionActive,
+                  subtitle: AppLocalizations.of(context)!.startedAt(timeStr),
                   onTap: null, // Can't edit active session
                 );
               },
@@ -239,9 +244,9 @@ class _ProgressiveWalkthroughScreenState extends ConsumerState<ProgressiveWalkth
   Widget _buildFacilityStep() {
     return _buildStepCard(
       icon: Icons.business,
-      title: 'Create Your Facility',
-      description: 'A facility represents the location where you play pickleball.',
-      buttonText: 'Create Facility',
+      title: AppLocalizations.of(context)!.createYourFacility,
+      description: AppLocalizations.of(context)!.facilityDescription,
+      buttonText: AppLocalizations.of(context)!.createFacility,
       onPressed: () {
         Navigator.push(
           context,
@@ -259,9 +264,9 @@ class _ProgressiveWalkthroughScreenState extends ConsumerState<ProgressiveWalkth
     
     return _buildStepCard(
       icon: Icons.sports_tennis,
-      title: 'Setup Courts',
-      description: 'Add at least one court to ${facilities.first.name}.',
-      buttonText: 'Setup Courts',
+      title: AppLocalizations.of(context)!.setupCourts,
+      description: AppLocalizations.of(context)!.courtsDescription(facilities.first.name),
+      buttonText: AppLocalizations.of(context)!.setupCourts,
       onPressed: () {
         Navigator.push(
           context,
@@ -279,9 +284,9 @@ class _ProgressiveWalkthroughScreenState extends ConsumerState<ProgressiveWalkth
   Widget _buildPlayersStep() {
     return _buildStepCard(
       icon: Icons.people,
-      title: 'Add Players',
-      description: 'Add at least 2 players to start playing.',
-      buttonText: 'Add Players',
+      title: AppLocalizations.of(context)!.addPlayers,
+      description: AppLocalizations.of(context)!.playersDescription,
+      buttonText: AppLocalizations.of(context)!.addPlayers,
       onPressed: () {
         Navigator.push(
           context,
@@ -307,22 +312,27 @@ class _ProgressiveWalkthroughScreenState extends ConsumerState<ProgressiveWalkth
     return courtsAsync.when(
       data: (courts) => _buildStepCard(
         icon: Icons.play_circle,
-        title: 'Start Your Session',
-        description: 'Ready to start playing at ${facility.name} with ${players.length} players and ${courts.length} court${courts.length != 1 ? 's' : ''}.',
-        buttonText: 'Start Session',
+        title: AppLocalizations.of(context)!.startYourSession,
+        description: AppLocalizations.of(context)!.sessionDescription(
+          facility.name,
+          players.length,
+          courts.length,
+          courts.length != 1 ? 's' : ''
+        ),
+        buttonText: AppLocalizations.of(context)!.startSession,
         onPressed: () => _startSession(facility, courts, players),
       ),
       loading: () => const Center(child: CircularProgressIndicator()),
-      error: (error, stackTrace) => const Center(child: Text('Error loading courts')),
+      error: (error, stackTrace) => Center(child: Text(AppLocalizations.of(context)!.errorLoadingCourts)),
     );
   }
 
   Widget _buildCompletedStep() {
     return _buildStepCard(
       icon: Icons.celebration,
-      title: 'All Set!',
-      description: 'Your session is active and ready for play. Players can now join the queue.',
-      buttonText: 'Go to Live View',
+      title: AppLocalizations.of(context)!.allSet,
+      description: AppLocalizations.of(context)!.completedDescription,
+      buttonText: AppLocalizations.of(context)!.goToLiveView,
       onPressed: () {
         Navigator.of(context).pushReplacementNamed('/');
       },
@@ -406,7 +416,7 @@ class _ProgressiveWalkthroughScreenState extends ConsumerState<ProgressiveWalkth
       
       // Validation: Ensure we have players
       if (players.length < 2) {
-        messageNotifier.showError('Need at least 2 players to start a session');
+        messageNotifier.showError(AppLocalizations.of(context)!.needAtLeastTwoPlayers);
         return;
       }
       
@@ -425,14 +435,14 @@ class _ProgressiveWalkthroughScreenState extends ConsumerState<ProgressiveWalkth
       // For now, we'll just show success
       
       if (mounted) {
-        messageNotifier.showSuccess('Session started successfully!');
+        messageNotifier.showSuccess(AppLocalizations.of(context)!.sessionStartedSuccessfully);
         setState(() {
           _currentStep = 4;
         });
       }
     } catch (e) {
       if (mounted) {
-        ref.read(messageProvider.notifier).showError('Error starting session: $e');
+        ref.read(messageProvider.notifier).showError(AppLocalizations.of(context)!.errorStartingSession(e.toString()));
       }
     }
   }

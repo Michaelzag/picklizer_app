@@ -131,5 +131,29 @@
         "type": "int"
       }
     }
-  }
+  },
+  "noLocation": "Aucun emplacement",
+  "courtCount": "{count} Terrain",
+  "courtsCount": "{count} Terrains",
+  "playerCount": "{count} Joueur",
+  "playersCount": "{count} Joueurs",
+  "morePlayersIndicator": " +{count} de plus",
+  "sessionActive": "Session Active",
+  "startedAt": "Commencée à {time}",
+  "createYourFacility": "Créer Votre Installation",
+  "facilityDescription": "Une installation représente l'endroit où vous jouez au pickleball.",
+  "setupCourts": "Configurer les Terrains",
+  "courtsDescription": "Ajoutez au moins un terrain à {facilityName}.",
+  "addPlayers": "Ajouter des Joueurs",
+  "playersDescription": "Ajoutez au moins 2 joueurs pour commencer à jouer.",
+  "startYourSession": "Commencer Votre Session",
+  "sessionDescription": "Prêt à commencer à jouer à {facilityName} avec {playerCount} joueurs et {courtCount} terrain{courtPlural}.",
+  "startSession": "Commencer la Session",
+  "allSet": "Tout est Prêt !",
+  "completedDescription": "Votre session est active et prête à jouer. Les joueurs peuvent maintenant rejoindre la file d'attente.",
+  "goToLiveView": "Aller à la Vue en Direct",
+  "errorLoadingCourts": "Erreur lors du chargement des terrains",
+  "needAtLeastTwoPlayers": "Il faut au moins 2 joueurs pour commencer une session",
+  "sessionStartedSuccessfully": "Session démarrée avec succès !",
+  "errorStartingSession": "Erreur lors du démarrage de la session : {error}"
 }

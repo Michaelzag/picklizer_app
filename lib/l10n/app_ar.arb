@@ -131,5 +131,29 @@
         "type": "int"
       }
     }
-  }
+  },
+  "noLocation": "لا يوجد موقع",
+  "courtCount": "{count} ملعب",
+  "courtsCount": "{count} ملاعب",
+  "playerCount": "{count} لاعب",
+  "playersCount": "{count} لاعبين",
+  "morePlayersIndicator": " +{count} آخرين",
+  "sessionActive": "الجلسة نشطة",
+  "startedAt": "بدأت في {time}",
+  "createYourFacility": "أنشئ مرفقك",
+  "facilityDescription": "المرفق يمثل المكان الذي تلعب فيه البيكل بول.",
+  "setupCourts": "إعداد الملاعب",
+  "courtsDescription": "أضف ملعباً واحداً على الأقل إلى {facilityName}.",
+  "addPlayers": "إضافة اللاعبين",
+  "playersDescription": "أضف لاعبين على الأقل لبدء اللعب.",
+  "startYourSession": "ابدأ جلستك",
+  "sessionDescription": "جاهز لبدء اللعب في {facilityName} مع {playerCount} لاعبين و {courtCount} ملعب{courtPlural}.",
+  "startSession": "بدء الجلسة",
+  "allSet": "كل شيء جاهز!",
+  "completedDescription": "جلستك نشطة وجاهزة للعب. يمكن للاعبين الآن الانضمام إلى الطابور.",
+  "goToLiveView": "الذهاب إلى العرض المباشر",
+  "errorLoadingCourts": "خطأ في تحميل الملاعب",
+  "needAtLeastTwoPlayers": "يحتاج إلى لاعبين على الأقل لبدء الجلسة",
+  "sessionStartedSuccessfully": "تم بدء الجلسة بنجاح!",
+  "errorStartingSession": "خطأ في بدء الجلسة: {error}"
 }

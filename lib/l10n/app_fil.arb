@@ -131,5 +131,29 @@
         "type": "int"
       }
     }
-  }
+  },
+  "noLocation": "Walang lokasyon",
+  "courtCount": "{count} Court",
+  "courtsCount": "{count} mga Court",
+  "playerCount": "{count} Manlalaro",
+  "playersCount": "{count} mga Manlalaro",
+  "morePlayersIndicator": " +{count} pa",
+  "sessionActive": "Aktibong Sesyon",
+  "startedAt": "Nagsimula sa {time}",
+  "createYourFacility": "Gumawa ng Inyong Pasilidad",
+  "facilityDescription": "Ang pasilidad ay kumakatawan sa lugar kung saan kayo naglalaro ng pickleball.",
+  "setupCourts": "I-setup ang mga Court",
+  "courtsDescription": "Magdagdag ng hindi bababa sa isang court sa {facilityName}.",
+  "addPlayers": "Magdagdag ng mga Manlalaro",
+  "playersDescription": "Magdagdag ng hindi bababa sa 2 manlalaro para magsimula ng laro.",
+  "startYourSession": "Simulan ang Inyong Sesyon",
+  "sessionDescription": "Handa na para magsimula ng laro sa {facilityName} na may {playerCount} manlalaro at {courtCount} court{courtPlural}.",
+  "startSession": "Simulan ang Sesyon",
+  "allSet": "Handa na Lahat!",
+  "completedDescription": "Ang inyong sesyon ay aktibo na at handa para sa laro. Maaari na ngayong sumali ang mga manlalaro sa pila.",
+  "goToLiveView": "Pumunta sa Live na Tingin",
+  "errorLoadingCourts": "May error sa pag-load ng mga court",
+  "needAtLeastTwoPlayers": "Kailangan ng hindi bababa sa 2 manlalaro para magsimula ng sesyon",
+  "sessionStartedSuccessfully": "Matagumpay na nagsimula ang sesyon!",
+  "errorStartingSession": "May error sa pagsisimula ng sesyon: {error}"
 }

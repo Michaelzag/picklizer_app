@@ -102,4 +102,102 @@ class AppLocalizationsVi extends AppLocalizations {
   String stepXOfY(int step, int total) {
     return 'Bước $step của $total';
   }
+
+  @override
+  String get noLocation => 'Không có vị trí';
+
+  @override
+  String courtCount(int count) {
+    return '$count Sân';
+  }
+
+  @override
+  String courtsCount(int count) {
+    return '$count Sân';
+  }
+
+  @override
+  String playerCount(int count) {
+    return '$count Người Chơi';
+  }
+
+  @override
+  String playersCount(int count) {
+    return '$count Người Chơi';
+  }
+
+  @override
+  String morePlayersIndicator(int count) {
+    return ' +$count thêm';
+  }
+
+  @override
+  String get sessionActive => 'Phiên Đang Hoạt Động';
+
+  @override
+  String startedAt(String time) {
+    return 'Bắt đầu lúc $time';
+  }
+
+  @override
+  String get createYourFacility => 'Tạo Cơ Sở Của Bạn';
+
+  @override
+  String get facilityDescription =>
+      'Cơ sở đại diện cho nơi bạn chơi pickleball.';
+
+  @override
+  String get setupCourts => 'Thiết Lập Sân';
+
+  @override
+  String courtsDescription(String facilityName) {
+    return 'Thêm ít nhất một sân vào $facilityName.';
+  }
+
+  @override
+  String get addPlayers => 'Thêm Người Chơi';
+
+  @override
+  String get playersDescription => 'Thêm ít nhất 2 người chơi để bắt đầu chơi.';
+
+  @override
+  String get startYourSession => 'Bắt Đầu Phiên Của Bạn';
+
+  @override
+  String sessionDescription(
+    String facilityName,
+    int playerCount,
+    int courtCount,
+    String courtPlural,
+  ) {
+    return 'Sẵn sàng bắt đầu chơi tại $facilityName với $playerCount người chơi và $courtCount sân$courtPlural.';
+  }
+
+  @override
+  String get startSession => 'Bắt Đầu Phiên';
+
+  @override
+  String get allSet => 'Đã Sẵn Sàng!';
+
+  @override
+  String get completedDescription =>
+      'Phiên của bạn đang hoạt động và sẵn sàng để chơi. Người chơi giờ có thể tham gia hàng đợi.';
+
+  @override
+  String get goToLiveView => 'Đi Đến Xem Trực Tiếp';
+
+  @override
+  String get errorLoadingCourts => 'Lỗi tải sân';
+
+  @override
+  String get needAtLeastTwoPlayers =>
+      'Cần ít nhất 2 người chơi để bắt đầu phiên';
+
+  @override
+  String get sessionStartedSuccessfully => 'Phiên đã bắt đầu thành công!';
+
+  @override
+  String errorStartingSession(String error) {
+    return 'Lỗi bắt đầu phiên: $error';
+  }
 }

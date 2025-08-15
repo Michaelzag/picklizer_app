@@ -131,5 +131,29 @@
         "type": "int"
       }
     }
-  }
+  },
+  "noLocation": "Tiada lokasi",
+  "courtCount": "{count} Gelanggang",
+  "courtsCount": "{count} Gelanggang",
+  "playerCount": "{count} Pemain",
+  "playersCount": "{count} Pemain",
+  "morePlayersIndicator": " +{count} lagi",
+  "sessionActive": "Sesi Aktif",
+  "startedAt": "Dimulakan pada {time}",
+  "createYourFacility": "Cipta Kemudahan Anda",
+  "facilityDescription": "Kemudahan mewakili lokasi di mana anda bermain pickleball.",
+  "setupCourts": "Sediakan Gelanggang",
+  "courtsDescription": "Tambah sekurang-kurangnya satu gelanggang ke {facilityName}.",
+  "addPlayers": "Tambah Pemain",
+  "playersDescription": "Tambah sekurang-kurangnya 2 pemain untuk mula bermain.",
+  "startYourSession": "Mulakan Sesi Anda",
+  "sessionDescription": "Bersedia untuk mula bermain di {facilityName} dengan {playerCount} pemain dan {courtCount} gelanggang{courtPlural}.",
+  "startSession": "Mulakan Sesi",
+  "allSet": "Semua Sedia!",
+  "completedDescription": "Sesi anda aktif dan sedia untuk bermain. Pemain kini boleh menyertai barisan.",
+  "goToLiveView": "Pergi ke Paparan Langsung",
+  "errorLoadingCourts": "Ralat memuatkan gelanggang",
+  "needAtLeastTwoPlayers": "Memerlukan sekurang-kurangnya 2 pemain untuk memulakan sesi",
+  "sessionStartedSuccessfully": "Sesi dimulakan dengan jayanya!",
+  "errorStartingSession": "Ralat memulakan sesi: {error}"
 }

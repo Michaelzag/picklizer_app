@@ -131,5 +131,29 @@
         "type": "int"
       }
     }
-  }
+  },
+  "noLocation": "无位置",
+  "courtCount": "{count} 个球场",
+  "courtsCount": "{count} 个球场",
+  "playerCount": "{count} 名球员",
+  "playersCount": "{count} 名球员",
+  "morePlayersIndicator": " +{count} 更多",
+  "sessionActive": "会话活跃",
+  "startedAt": "开始于 {time}",
+  "createYourFacility": "创建您的场馆",
+  "facilityDescription": "场馆代表您打匹克球的地点。",
+  "setupCourts": "设置球场",
+  "courtsDescription": "为 {facilityName} 添加至少一个球场。",
+  "addPlayers": "添加球员",
+  "playersDescription": "添加至少 2 名球员开始游戏。",
+  "startYourSession": "开始您的会话",
+  "sessionDescription": "准备在 {facilityName} 开始游戏，有 {playerCount} 名球员和 {courtCount} 个球场{courtPlural}。",
+  "startSession": "开始会话",
+  "allSet": "全部设置完成！",
+  "completedDescription": "您的会话已激活并准备游戏。球员现在可以加入队列。",
+  "goToLiveView": "转到实时视图",
+  "errorLoadingCourts": "加载球场时出错",
+  "needAtLeastTwoPlayers": "需要至少 2 名球员才能开始会话",
+  "sessionStartedSuccessfully": "会话启动成功！",
+  "errorStartingSession": "启动会话时出错：{error}"
 }

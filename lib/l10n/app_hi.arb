@@ -131,5 +131,29 @@
         "type": "int"
       }
     }
-  }
+  },
+  "noLocation": "कोई स्थान नहीं",
+  "courtCount": "{count} कोर्ट",
+  "courtsCount": "{count} कोर्ट",
+  "playerCount": "{count} खिलाड़ी",
+  "playersCount": "{count} खिलाड़ी",
+  "morePlayersIndicator": " +{count} और",
+  "sessionActive": "सत्र सक्रिय",
+  "startedAt": "{time} पर शुरू हुआ",
+  "createYourFacility": "अपनी सुविधा बनाएं",
+  "facilityDescription": "एक सुविधा उस स्थान का प्रतिनिधित्व करती है जहाँ आप पिकलबॉल खेलते हैं।",
+  "setupCourts": "कोर्ट सेटअप करें",
+  "courtsDescription": "{facilityName} में कम से कम एक कोर्ट जोड़ें।",
+  "addPlayers": "खिलाड़ी जोड़ें",
+  "playersDescription": "खेलना शुरू करने के लिए कम से कम 2 खिलाड़ी जोड़ें।",
+  "startYourSession": "अपना सत्र शुरू करें",
+  "sessionDescription": "{facilityName} में {playerCount} खिलाड़ियों और {courtCount} कोर्ट{courtPlural} के साथ खेलना शुरू करने के लिए तैयार।",
+  "startSession": "सत्र शुरू करें",
+  "allSet": "सब तैयार!",
+  "completedDescription": "आपका सत्र सक्रिय है और खेलने के लिए तैयार है। खिलाड़ी अब कतार में शामिल हो सकते हैं।",
+  "goToLiveView": "लाइव व्यू पर जाएं",
+  "errorLoadingCourts": "कोर्ट लोड करने में त्रुटि",
+  "needAtLeastTwoPlayers": "सत्र शुरू करने के लिए कम से कम 2 खिलाड़ियों की आवश्यकता है",
+  "sessionStartedSuccessfully": "सत्र सफलतापूर्वक शुरू हुआ!",
+  "errorStartingSession": "सत्र शुरू करने में त्रुटि: {error}"
 }

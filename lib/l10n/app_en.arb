@@ -163,5 +163,191 @@
         "example": "6"
       }
     }
+  },
+
+  "noLocation": "No location",
+  "@noLocation": {
+    "description": "Text shown when facility has no location"
+  },
+
+  "courtCount": "{count} Court",
+  "@courtCount": {
+    "description": "Text showing number of courts (singular)",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "1"
+      }
+    }
+  },
+
+  "courtsCount": "{count} Courts",
+  "@courtsCount": {
+    "description": "Text showing number of courts (plural)",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "2"
+      }
+    }
+  },
+
+  "playerCount": "{count} Player",
+  "@playerCount": {
+    "description": "Text showing number of players (singular)",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "1"
+      }
+    }
+  },
+
+  "playersCount": "{count} Players",
+  "@playersCount": {
+    "description": "Text showing number of players (plural)",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "2"
+      }
+    }
+  },
+
+  "morePlayersIndicator": " +{count} more",
+  "@morePlayersIndicator": {
+    "description": "Text showing additional players count",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "3"
+      }
+    }
+  },
+
+  "sessionActive": "Session Active",
+  "@sessionActive": {
+    "description": "Text showing session is currently active"
+  },
+
+  "startedAt": "Started at {time}",
+  "@startedAt": {
+    "description": "Text showing when session was started",
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "14:30"
+      }
+    }
+  },
+
+  "createYourFacility": "Create Your Facility",
+  "@createYourFacility": {
+    "description": "Title for facility creation step"
+  },
+
+  "facilityDescription": "A facility represents the location where you play pickleball.",
+  "@facilityDescription": {
+    "description": "Description for facility creation step"
+  },
+
+  "setupCourts": "Setup Courts",
+  "@setupCourts": {
+    "description": "Title for courts setup step"
+  },
+
+  "courtsDescription": "Add at least one court to {facilityName}.",
+  "@courtsDescription": {
+    "description": "Description for courts setup step",
+    "placeholders": {
+      "facilityName": {
+        "type": "String",
+        "example": "Main Facility"
+      }
+    }
+  },
+
+  "addPlayers": "Add Players",
+  "@addPlayers": {
+    "description": "Title for players setup step"
+  },
+
+  "playersDescription": "Add at least 2 players to start playing.",
+  "@playersDescription": {
+    "description": "Description for players setup step"
+  },
+
+  "startYourSession": "Start Your Session",
+  "@startYourSession": {
+    "description": "Title for session start step"
+  },
+
+  "sessionDescription": "Ready to start playing at {facilityName} with {playerCount} players and {courtCount} court{courtPlural}.",
+  "@sessionDescription": {
+    "description": "Description for session start step",
+    "placeholders": {
+      "facilityName": {
+        "type": "String",
+        "example": "Main Facility"
+      },
+      "playerCount": {
+        "type": "int",
+        "example": "4"
+      },
+      "courtCount": {
+        "type": "int",
+        "example": "2"
+      },
+      "courtPlural": {
+        "type": "String",
+        "example": "s"
+      }
+    }
+  },
+
+  "startSession": "Start Session",
+  "@startSession": {
+    "description": "Button text to start session"
+  },
+
+  "allSet": "All Set!",
+  "@allSet": {
+    "description": "Title for completion step"
+  },
+
+  "completedDescription": "Your session is active and ready for play. Players can now join the queue.",
+  "@completedDescription": {
+    "description": "Description for completion step"
+  },
+
+  "goToLiveView": "Go to Live View",
+  "@goToLiveView": {
+    "description": "Button text to go to live view"
+  },
+
+  "errorLoadingCourts": "Error loading courts",
+  "@errorLoadingCourts": {
+    "description": "Error message when courts fail to load"
+  },
+
+  "needAtLeastTwoPlayers": "Need at least 2 players to start a session",
+  "@needAtLeastTwoPlayers": {
+    "description": "Error message when trying to start session without enough players"
+  },
+
+  "sessionStartedSuccessfully": "Session started successfully!",
+  "@sessionStartedSuccessfully": {
+    "description": "Success message when session starts"
+  },
+
+  "errorStartingSession": "Error starting session: {error}",
+  "@errorStartingSession": {
+    "description": "Error message when session fails to start",
+    "placeholders": {
+      "error": {
+        "type": "String",
+        "example": "Database error"
+      }
+    }
   }
 }

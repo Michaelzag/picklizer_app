@@ -309,6 +309,155 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Step {step} of {total}'**
   String stepXOfY(int step, int total);
+
+  /// Text shown when facility has no location
+  ///
+  /// In en, this message translates to:
+  /// **'No location'**
+  String get noLocation;
+
+  /// Text showing number of courts (singular)
+  ///
+  /// In en, this message translates to:
+  /// **'{count} Court'**
+  String courtCount(int count);
+
+  /// Text showing number of courts (plural)
+  ///
+  /// In en, this message translates to:
+  /// **'{count} Courts'**
+  String courtsCount(int count);
+
+  /// Text showing number of players (singular)
+  ///
+  /// In en, this message translates to:
+  /// **'{count} Player'**
+  String playerCount(int count);
+
+  /// Text showing number of players (plural)
+  ///
+  /// In en, this message translates to:
+  /// **'{count} Players'**
+  String playersCount(int count);
+
+  /// Text showing additional players count
+  ///
+  /// In en, this message translates to:
+  /// **' +{count} more'**
+  String morePlayersIndicator(int count);
+
+  /// Text showing session is currently active
+  ///
+  /// In en, this message translates to:
+  /// **'Session Active'**
+  String get sessionActive;
+
+  /// Text showing when session was started
+  ///
+  /// In en, this message translates to:
+  /// **'Started at {time}'**
+  String startedAt(String time);
+
+  /// Title for facility creation step
+  ///
+  /// In en, this message translates to:
+  /// **'Create Your Facility'**
+  String get createYourFacility;
+
+  /// Description for facility creation step
+  ///
+  /// In en, this message translates to:
+  /// **'A facility represents the location where you play pickleball.'**
+  String get facilityDescription;
+
+  /// Title for courts setup step
+  ///
+  /// In en, this message translates to:
+  /// **'Setup Courts'**
+  String get setupCourts;
+
+  /// Description for courts setup step
+  ///
+  /// In en, this message translates to:
+  /// **'Add at least one court to {facilityName}.'**
+  String courtsDescription(String facilityName);
+
+  /// Title for players setup step
+  ///
+  /// In en, this message translates to:
+  /// **'Add Players'**
+  String get addPlayers;
+
+  /// Description for players setup step
+  ///
+  /// In en, this message translates to:
+  /// **'Add at least 2 players to start playing.'**
+  String get playersDescription;
+
+  /// Title for session start step
+  ///
+  /// In en, this message translates to:
+  /// **'Start Your Session'**
+  String get startYourSession;
+
+  /// Description for session start step
+  ///
+  /// In en, this message translates to:
+  /// **'Ready to start playing at {facilityName} with {playerCount} players and {courtCount} court{courtPlural}.'**
+  String sessionDescription(
+    String facilityName,
+    int playerCount,
+    int courtCount,
+    String courtPlural,
+  );
+
+  /// Button text to start session
+  ///
+  /// In en, this message translates to:
+  /// **'Start Session'**
+  String get startSession;
+
+  /// Title for completion step
+  ///
+  /// In en, this message translates to:
+  /// **'All Set!'**
+  String get allSet;
+
+  /// Description for completion step
+  ///
+  /// In en, this message translates to:
+  /// **'Your session is active and ready for play. Players can now join the queue.'**
+  String get completedDescription;
+
+  /// Button text to go to live view
+  ///
+  /// In en, this message translates to:
+  /// **'Go to Live View'**
+  String get goToLiveView;
+
+  /// Error message when courts fail to load
+  ///
+  /// In en, this message translates to:
+  /// **'Error loading courts'**
+  String get errorLoadingCourts;
+
+  /// Error message when trying to start session without enough players
+  ///
+  /// In en, this message translates to:
+  /// **'Need at least 2 players to start a session'**
+  String get needAtLeastTwoPlayers;
+
+  /// Success message when session starts
+  ///
+  /// In en, this message translates to:
+  /// **'Session started successfully!'**
+  String get sessionStartedSuccessfully;
+
+  /// Error message when session fails to start
+  ///
+  /// In en, this message translates to:
+  /// **'Error starting session: {error}'**
+  String errorStartingSession(String error);
 }
 
 class _AppLocalizationsDelegate

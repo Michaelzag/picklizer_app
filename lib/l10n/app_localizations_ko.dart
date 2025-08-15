@@ -102,4 +102,100 @@ class AppLocalizationsKo extends AppLocalizations {
   String stepXOfY(int step, int total) {
     return '$total 중 $step단계';
   }
+
+  @override
+  String get noLocation => '위치 없음';
+
+  @override
+  String courtCount(int count) {
+    return '$count개 코트';
+  }
+
+  @override
+  String courtsCount(int count) {
+    return '$count개 코트';
+  }
+
+  @override
+  String playerCount(int count) {
+    return '$count명 플레이어';
+  }
+
+  @override
+  String playersCount(int count) {
+    return '$count명 플레이어';
+  }
+
+  @override
+  String morePlayersIndicator(int count) {
+    return ' +$count명 더';
+  }
+
+  @override
+  String get sessionActive => '세션 활성';
+
+  @override
+  String startedAt(String time) {
+    return '$time에 시작됨';
+  }
+
+  @override
+  String get createYourFacility => '시설 만들기';
+
+  @override
+  String get facilityDescription => '시설은 피클볼을 플레이하는 장소를 나타냅니다.';
+
+  @override
+  String get setupCourts => '코트 설정';
+
+  @override
+  String courtsDescription(String facilityName) {
+    return '$facilityName에 최소 하나의 코트를 추가하세요.';
+  }
+
+  @override
+  String get addPlayers => '플레이어 추가';
+
+  @override
+  String get playersDescription => '플레이를 시작하려면 최소 2명의 플레이어를 추가하세요.';
+
+  @override
+  String get startYourSession => '세션 시작';
+
+  @override
+  String sessionDescription(
+    String facilityName,
+    int playerCount,
+    int courtCount,
+    String courtPlural,
+  ) {
+    return '$facilityName에서 $playerCount명의 플레이어와 $courtCount개의 코트$courtPlural로 플레이할 준비가 되었습니다.';
+  }
+
+  @override
+  String get startSession => '세션 시작';
+
+  @override
+  String get allSet => '모든 준비 완료!';
+
+  @override
+  String get completedDescription =>
+      '세션이 활성화되어 플레이할 준비가 되었습니다. 플레이어들이 이제 대기열에 참여할 수 있습니다.';
+
+  @override
+  String get goToLiveView => '라이브 뷰로 이동';
+
+  @override
+  String get errorLoadingCourts => '코트 로딩 오류';
+
+  @override
+  String get needAtLeastTwoPlayers => '세션을 시작하려면 최소 2명의 플레이어가 필요합니다';
+
+  @override
+  String get sessionStartedSuccessfully => '세션이 성공적으로 시작되었습니다!';
+
+  @override
+  String errorStartingSession(String error) {
+    return '세션 시작 오류: $error';
+  }
 }

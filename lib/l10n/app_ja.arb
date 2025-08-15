@@ -131,5 +131,29 @@
         "type": "int"
       }
     }
-  }
+  },
+  "noLocation": "場所なし",
+  "courtCount": "{count}コート",
+  "courtsCount": "{count}コート",
+  "playerCount": "{count}プレイヤー",
+  "playersCount": "{count}プレイヤー",
+  "morePlayersIndicator": " +{count}人",
+  "sessionActive": "セッション実行中",
+  "startedAt": "{time}に開始",
+  "createYourFacility": "施設を作成してください",
+  "facilityDescription": "施設はピックルボールをプレイする場所を表します。",
+  "setupCourts": "コートをセットアップ",
+  "courtsDescription": "{facilityName}に少なくとも1つのコートを追加してください。",
+  "addPlayers": "プレイヤーを追加",
+  "playersDescription": "プレイを開始するために少なくとも2人のプレイヤーを追加してください。",
+  "startYourSession": "セッションを開始",
+  "sessionDescription": "{facilityName}で{playerCount}人のプレイヤーと{courtCount}コート{courtPlural}でプレイを開始する準備ができました。",
+  "startSession": "セッション開始",
+  "allSet": "準備完了！",
+  "completedDescription": "セッションがアクティブになり、プレイの準備ができました。プレイヤーはキューに参加できます。",
+  "goToLiveView": "ライブビューに移動",
+  "errorLoadingCourts": "コートの読み込みエラー",
+  "needAtLeastTwoPlayers": "セッションを開始するには少なくとも2人のプレイヤーが必要です",
+  "sessionStartedSuccessfully": "セッションが正常に開始されました！",
+  "errorStartingSession": "セッション開始エラー: {error}"
 }

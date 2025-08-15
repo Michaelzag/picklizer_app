@@ -102,4 +102,103 @@ class AppLocalizationsMs extends AppLocalizations {
   String stepXOfY(int step, int total) {
     return 'Langkah $step daripada $total';
   }
+
+  @override
+  String get noLocation => 'Tiada lokasi';
+
+  @override
+  String courtCount(int count) {
+    return '$count Gelanggang';
+  }
+
+  @override
+  String courtsCount(int count) {
+    return '$count Gelanggang';
+  }
+
+  @override
+  String playerCount(int count) {
+    return '$count Pemain';
+  }
+
+  @override
+  String playersCount(int count) {
+    return '$count Pemain';
+  }
+
+  @override
+  String morePlayersIndicator(int count) {
+    return ' +$count lagi';
+  }
+
+  @override
+  String get sessionActive => 'Sesi Aktif';
+
+  @override
+  String startedAt(String time) {
+    return 'Dimulakan pada $time';
+  }
+
+  @override
+  String get createYourFacility => 'Cipta Kemudahan Anda';
+
+  @override
+  String get facilityDescription =>
+      'Kemudahan mewakili lokasi di mana anda bermain pickleball.';
+
+  @override
+  String get setupCourts => 'Sediakan Gelanggang';
+
+  @override
+  String courtsDescription(String facilityName) {
+    return 'Tambah sekurang-kurangnya satu gelanggang ke $facilityName.';
+  }
+
+  @override
+  String get addPlayers => 'Tambah Pemain';
+
+  @override
+  String get playersDescription =>
+      'Tambah sekurang-kurangnya 2 pemain untuk mula bermain.';
+
+  @override
+  String get startYourSession => 'Mulakan Sesi Anda';
+
+  @override
+  String sessionDescription(
+    String facilityName,
+    int playerCount,
+    int courtCount,
+    String courtPlural,
+  ) {
+    return 'Bersedia untuk mula bermain di $facilityName dengan $playerCount pemain dan $courtCount gelanggang$courtPlural.';
+  }
+
+  @override
+  String get startSession => 'Mulakan Sesi';
+
+  @override
+  String get allSet => 'Semua Sedia!';
+
+  @override
+  String get completedDescription =>
+      'Sesi anda aktif dan sedia untuk bermain. Pemain kini boleh menyertai barisan.';
+
+  @override
+  String get goToLiveView => 'Pergi ke Paparan Langsung';
+
+  @override
+  String get errorLoadingCourts => 'Ralat memuatkan gelanggang';
+
+  @override
+  String get needAtLeastTwoPlayers =>
+      'Memerlukan sekurang-kurangnya 2 pemain untuk memulakan sesi';
+
+  @override
+  String get sessionStartedSuccessfully => 'Sesi dimulakan dengan jayanya!';
+
+  @override
+  String errorStartingSession(String error) {
+    return 'Ralat memulakan sesi: $error';
+  }
 }
