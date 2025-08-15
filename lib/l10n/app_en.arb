@@ -1,0 +1,167 @@
+{
+  "@@locale": "en",
+  "appTitle": "Pickleizer",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  
+  "liveView": "Live View",
+  "@liveView": {
+    "description": "Bottom navigation tab for live view"
+  },
+  
+  "queue": "Queue",
+  "@queue": {
+    "description": "Bottom navigation tab for queue"
+  },
+  
+  "facilities": "Facilities",
+  "@facilities": {
+    "description": "Bottom navigation tab for facilities"
+  },
+  
+  "players": "Players",
+  "@players": {
+    "description": "Bottom navigation tab for players"
+  },
+  
+  "sessions": "Sessions",
+  "@sessions": {
+    "description": "Bottom navigation tab for sessions"
+  },
+  
+  "settings": "Settings",
+  "@settings": {
+    "description": "Settings menu item"
+  },
+  
+  "language": "Language",
+  "@language": {
+    "description": "Language setting label"
+  },
+  
+  "createFacility": "Create Facility",
+  "@createFacility": {
+    "description": "Button to create a new facility"
+  },
+  
+  "addCourt": "Add Court",
+  "@addCourt": {
+    "description": "Button to add a new court"
+  },
+  
+  "addPlayer": "Add Player",
+  "@addPlayer": {
+    "description": "Button to add a new player"
+  },
+  
+  "createSession": "Create Session",
+  "@createSession": {
+    "description": "Button to create a new session"
+  },
+  
+  "facilityName": "Facility Name",
+  "@facilityName": {
+    "description": "Label for facility name field"
+  },
+  
+  "location": "Location",
+  "@location": {
+    "description": "Label for location field"
+  },
+  
+  "playerName": "Player Name",
+  "@playerName": {
+    "description": "Label for player name field"
+  },
+  
+  "skillLevel": "Skill Level",
+  "@skillLevel": {
+    "description": "Label for skill level field"
+  },
+  
+  "beginner": "Beginner",
+  "@beginner": {
+    "description": "Beginner skill level"
+  },
+  
+  "intermediate": "Intermediate",
+  "@intermediate": {
+    "description": "Intermediate skill level"
+  },
+  
+  "advanced": "Advanced",
+  "@advanced": {
+    "description": "Advanced skill level"
+  },
+  
+  "singles": "Singles",
+  "@singles": {
+    "description": "Singles game mode"
+  },
+  
+  "doubles": "Doubles",
+  "@doubles": {
+    "description": "Doubles game mode"
+  },
+  
+  "kingOfHill": "King of Hill",
+  "@kingOfHill": {
+    "description": "King of Hill game mode"
+  },
+  
+  "roundRobin": "Round Robin",
+  "@roundRobin": {
+    "description": "Round Robin game mode"
+  },
+  
+  "save": "Save",
+  "@save": {
+    "description": "Save button"
+  },
+  
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Cancel button"
+  },
+  
+  "delete": "Delete",
+  "@delete": {
+    "description": "Delete button"
+  },
+  
+  "edit": "Edit",
+  "@edit": {
+    "description": "Edit button"
+  },
+  
+  "next": "Next",
+  "@next": {
+    "description": "Next button"
+  },
+  
+  "previous": "Previous",
+  "@previous": {
+    "description": "Previous button"
+  },
+  
+  "setupWalkthrough": "Setup Walkthrough",
+  "@setupWalkthrough": {
+    "description": "Title for setup walkthrough"
+  },
+  
+  "stepXOfY": "Step {step} of {total}",
+  "@stepXOfY": {
+    "description": "Progress indicator showing current step",
+    "placeholders": {
+      "step": {
+        "type": "int",
+        "example": "1"
+      },
+      "total": {
+        "type": "int",
+        "example": "6"
+      }
+    }
+  }
+}

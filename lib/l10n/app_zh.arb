@@ -1,0 +1,135 @@
+{
+  "@@locale": "zh",
+  "appTitle": "Pickleizer",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "liveView": "实时视图",
+  "@liveView": {
+    "description": "Bottom navigation tab for live view"
+  },
+  "queue": "队列",
+  "@queue": {
+    "description": "Bottom navigation tab for queue"
+  },
+  "facilities": "场馆",
+  "@facilities": {
+    "description": "Bottom navigation tab for facilities"
+  },
+  "players": "球员",
+  "@players": {
+    "description": "Bottom navigation tab for players"
+  },
+  "sessions": "会话",
+  "@sessions": {
+    "description": "Bottom navigation tab for sessions"
+  },
+  "settings": "设置",
+  "@settings": {
+    "description": "Settings menu item"
+  },
+  "language": "语言",
+  "@language": {
+    "description": "Language setting label"
+  },
+  "createFacility": "创建场馆",
+  "@createFacility": {
+    "description": "Button to create a new facility"
+  },
+  "addCourt": "添加球场",
+  "@addCourt": {
+    "description": "Button to add a new court"
+  },
+  "addPlayer": "添加球员",
+  "@addPlayer": {
+    "description": "Button to add a new player"
+  },
+  "createSession": "创建会话",
+  "@createSession": {
+    "description": "Button to create a new session"
+  },
+  "facilityName": "场馆名称",
+  "@facilityName": {
+    "description": "Label for facility name field"
+  },
+  "location": "位置",
+  "@location": {
+    "description": "Label for location field"
+  },
+  "playerName": "球员姓名",
+  "@playerName": {
+    "description": "Label for player name field"
+  },
+  "skillLevel": "技能水平",
+  "@skillLevel": {
+    "description": "Label for skill level field"
+  },
+  "beginner": "初学者",
+  "@beginner": {
+    "description": "Beginner skill level"
+  },
+  "intermediate": "中级",
+  "@intermediate": {
+    "description": "Intermediate skill level"
+  },
+  "advanced": "高级",
+  "@advanced": {
+    "description": "Advanced skill level"
+  },
+  "singles": "单打",
+  "@singles": {
+    "description": "Singles game mode"
+  },
+  "doubles": "双打",
+  "@doubles": {
+    "description": "Doubles game mode"
+  },
+  "kingOfHill": "山丘之王",
+  "@kingOfHill": {
+    "description": "King of Hill game mode"
+  },
+  "roundRobin": "循环赛",
+  "@roundRobin": {
+    "description": "Round Robin game mode"
+  },
+  "save": "保存",
+  "@save": {
+    "description": "Save button"
+  },
+  "cancel": "取消",
+  "@cancel": {
+    "description": "Cancel button"
+  },
+  "delete": "删除",
+  "@delete": {
+    "description": "Delete button"
+  },
+  "edit": "编辑",
+  "@edit": {
+    "description": "Edit button"
+  },
+  "next": "下一步",
+  "@next": {
+    "description": "Next button"
+  },
+  "previous": "上一步",
+  "@previous": {
+    "description": "Previous button"
+  },
+  "setupWalkthrough": "设置向导",
+  "@setupWalkthrough": {
+    "description": "Title for setup walkthrough"
+  },
+  "stepXOfY": "第 {step} 步，共 {total} 步",
+  "@stepXOfY": {
+    "description": "Progress indicator showing current step",
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  }
+}

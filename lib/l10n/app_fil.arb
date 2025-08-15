@@ -1,0 +1,135 @@
+{
+  "@@locale": "fil",
+  "appTitle": "Pickleizer",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "liveView": "Live na Tingin",
+  "@liveView": {
+    "description": "Bottom navigation tab for live view"
+  },
+  "queue": "Pila",
+  "@queue": {
+    "description": "Bottom navigation tab for queue"
+  },
+  "facilities": "Mga Pasilidad",
+  "@facilities": {
+    "description": "Bottom navigation tab for facilities"
+  },
+  "players": "Mga Manlalaro",
+  "@players": {
+    "description": "Bottom navigation tab for players"
+  },
+  "sessions": "Mga Sesyon",
+  "@sessions": {
+    "description": "Bottom navigation tab for sessions"
+  },
+  "settings": "Mga Setting",
+  "@settings": {
+    "description": "Settings menu item"
+  },
+  "language": "Wika",
+  "@language": {
+    "description": "Language setting label"
+  },
+  "createFacility": "Gumawa ng Pasilidad",
+  "@createFacility": {
+    "description": "Button to create a new facility"
+  },
+  "addCourt": "Magdagdag ng Court",
+  "@addCourt": {
+    "description": "Button to add a new court"
+  },
+  "addPlayer": "Magdagdag ng Manlalaro",
+  "@addPlayer": {
+    "description": "Button to add a new player"
+  },
+  "createSession": "Gumawa ng Sesyon",
+  "@createSession": {
+    "description": "Button to create a new session"
+  },
+  "facilityName": "Pangalan ng Pasilidad",
+  "@facilityName": {
+    "description": "Label for facility name field"
+  },
+  "location": "Lokasyon",
+  "@location": {
+    "description": "Label for location field"
+  },
+  "playerName": "Pangalan ng Manlalaro",
+  "@playerName": {
+    "description": "Label for player name field"
+  },
+  "skillLevel": "Antas ng Kasanayan",
+  "@skillLevel": {
+    "description": "Label for skill level field"
+  },
+  "beginner": "Nagsisimula",
+  "@beginner": {
+    "description": "Beginner skill level"
+  },
+  "intermediate": "Katamtaman",
+  "@intermediate": {
+    "description": "Intermediate skill level"
+  },
+  "advanced": "Eksperto",
+  "@advanced": {
+    "description": "Advanced skill level"
+  },
+  "singles": "Singles",
+  "@singles": {
+    "description": "Singles game mode"
+  },
+  "doubles": "Doubles",
+  "@doubles": {
+    "description": "Doubles game mode"
+  },
+  "kingOfHill": "Hari ng Burol",
+  "@kingOfHill": {
+    "description": "King of Hill game mode"
+  },
+  "roundRobin": "Round Robin",
+  "@roundRobin": {
+    "description": "Round Robin game mode"
+  },
+  "save": "I-save",
+  "@save": {
+    "description": "Save button"
+  },
+  "cancel": "Kanselahin",
+  "@cancel": {
+    "description": "Cancel button"
+  },
+  "delete": "Tanggalin",
+  "@delete": {
+    "description": "Delete button"
+  },
+  "edit": "I-edit",
+  "@edit": {
+    "description": "Edit button"
+  },
+  "next": "Susunod",
+  "@next": {
+    "description": "Next button"
+  },
+  "previous": "Nakaraan",
+  "@previous": {
+    "description": "Previous button"
+  },
+  "setupWalkthrough": "Gabay sa Pag-setup",
+  "@setupWalkthrough": {
+    "description": "Title for setup walkthrough"
+  },
+  "stepXOfY": "Hakbang {step} ng {total}",
+  "@stepXOfY": {
+    "description": "Progress indicator showing current step",
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  }
+}

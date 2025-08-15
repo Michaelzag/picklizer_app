@@ -1,0 +1,135 @@
+{
+  "@@locale": "ar",
+  "appTitle": "Pickleizer",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "liveView": "العرض المباشر",
+  "@liveView": {
+    "description": "Bottom navigation tab for live view"
+  },
+  "queue": "الطابور",
+  "@queue": {
+    "description": "Bottom navigation tab for queue"
+  },
+  "facilities": "المرافق",
+  "@facilities": {
+    "description": "Bottom navigation tab for facilities"
+  },
+  "players": "اللاعبون",
+  "@players": {
+    "description": "Bottom navigation tab for players"
+  },
+  "sessions": "الجلسات",
+  "@sessions": {
+    "description": "Bottom navigation tab for sessions"
+  },
+  "settings": "الإعدادات",
+  "@settings": {
+    "description": "Settings menu item"
+  },
+  "language": "اللغة",
+  "@language": {
+    "description": "Language setting label"
+  },
+  "createFacility": "إنشاء مرفق",
+  "@createFacility": {
+    "description": "Button to create a new facility"
+  },
+  "addCourt": "إضافة ملعب",
+  "@addCourt": {
+    "description": "Button to add a new court"
+  },
+  "addPlayer": "إضافة لاعب",
+  "@addPlayer": {
+    "description": "Button to add a new player"
+  },
+  "createSession": "إنشاء جلسة",
+  "@createSession": {
+    "description": "Button to create a new session"
+  },
+  "facilityName": "اسم المرفق",
+  "@facilityName": {
+    "description": "Label for facility name field"
+  },
+  "location": "الموقع",
+  "@location": {
+    "description": "Label for location field"
+  },
+  "playerName": "اسم اللاعب",
+  "@playerName": {
+    "description": "Label for player name field"
+  },
+  "skillLevel": "مستوى المهارة",
+  "@skillLevel": {
+    "description": "Label for skill level field"
+  },
+  "beginner": "مبتدئ",
+  "@beginner": {
+    "description": "Beginner skill level"
+  },
+  "intermediate": "متوسط",
+  "@intermediate": {
+    "description": "Intermediate skill level"
+  },
+  "advanced": "متقدم",
+  "@advanced": {
+    "description": "Advanced skill level"
+  },
+  "singles": "فردي",
+  "@singles": {
+    "description": "Singles game mode"
+  },
+  "doubles": "زوجي",
+  "@doubles": {
+    "description": "Doubles game mode"
+  },
+  "kingOfHill": "ملك التل",
+  "@kingOfHill": {
+    "description": "King of Hill game mode"
+  },
+  "roundRobin": "الدوري الدائري",
+  "@roundRobin": {
+    "description": "Round Robin game mode"
+  },
+  "save": "حفظ",
+  "@save": {
+    "description": "Save button"
+  },
+  "cancel": "إلغاء",
+  "@cancel": {
+    "description": "Cancel button"
+  },
+  "delete": "حذف",
+  "@delete": {
+    "description": "Delete button"
+  },
+  "edit": "تعديل",
+  "@edit": {
+    "description": "Edit button"
+  },
+  "next": "التالي",
+  "@next": {
+    "description": "Next button"
+  },
+  "previous": "السابق",
+  "@previous": {
+    "description": "Previous button"
+  },
+  "setupWalkthrough": "دليل الإعداد",
+  "@setupWalkthrough": {
+    "description": "Title for setup walkthrough"
+  },
+  "stepXOfY": "الخطوة {step} من {total}",
+  "@stepXOfY": {
+    "description": "Progress indicator showing current step",
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  }
+}

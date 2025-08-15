@@ -1,0 +1,135 @@
+{
+  "@@locale": "ja",
+  "appTitle": "Pickleizer",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "liveView": "ライブビュー",
+  "@liveView": {
+    "description": "Bottom navigation tab for live view"
+  },
+  "queue": "キュー",
+  "@queue": {
+    "description": "Bottom navigation tab for queue"
+  },
+  "facilities": "施設",
+  "@facilities": {
+    "description": "Bottom navigation tab for facilities"
+  },
+  "players": "プレイヤー",
+  "@players": {
+    "description": "Bottom navigation tab for players"
+  },
+  "sessions": "セッション",
+  "@sessions": {
+    "description": "Bottom navigation tab for sessions"
+  },
+  "settings": "設定",
+  "@settings": {
+    "description": "Settings menu item"
+  },
+  "language": "言語",
+  "@language": {
+    "description": "Language setting label"
+  },
+  "createFacility": "施設を作成",
+  "@createFacility": {
+    "description": "Button to create a new facility"
+  },
+  "addCourt": "コートを追加",
+  "@addCourt": {
+    "description": "Button to add a new court"
+  },
+  "addPlayer": "プレイヤーを追加",
+  "@addPlayer": {
+    "description": "Button to add a new player"
+  },
+  "createSession": "セッションを作成",
+  "@createSession": {
+    "description": "Button to create a new session"
+  },
+  "facilityName": "施設名",
+  "@facilityName": {
+    "description": "Label for facility name field"
+  },
+  "location": "場所",
+  "@location": {
+    "description": "Label for location field"
+  },
+  "playerName": "プレイヤー名",
+  "@playerName": {
+    "description": "Label for player name field"
+  },
+  "skillLevel": "スキルレベル",
+  "@skillLevel": {
+    "description": "Label for skill level field"
+  },
+  "beginner": "初心者",
+  "@beginner": {
+    "description": "Beginner skill level"
+  },
+  "intermediate": "中級者",
+  "@intermediate": {
+    "description": "Intermediate skill level"
+  },
+  "advanced": "上級者",
+  "@advanced": {
+    "description": "Advanced skill level"
+  },
+  "singles": "シングルス",
+  "@singles": {
+    "description": "Singles game mode"
+  },
+  "doubles": "ダブルス",
+  "@doubles": {
+    "description": "Doubles game mode"
+  },
+  "kingOfHill": "キングオブヒル",
+  "@kingOfHill": {
+    "description": "King of Hill game mode"
+  },
+  "roundRobin": "ラウンドロビン",
+  "@roundRobin": {
+    "description": "Round Robin game mode"
+  },
+  "save": "保存",
+  "@save": {
+    "description": "Save button"
+  },
+  "cancel": "キャンセル",
+  "@cancel": {
+    "description": "Cancel button"
+  },
+  "delete": "削除",
+  "@delete": {
+    "description": "Delete button"
+  },
+  "edit": "編集",
+  "@edit": {
+    "description": "Edit button"
+  },
+  "next": "次へ",
+  "@next": {
+    "description": "Next button"
+  },
+  "previous": "前へ",
+  "@previous": {
+    "description": "Previous button"
+  },
+  "setupWalkthrough": "セットアップガイド",
+  "@setupWalkthrough": {
+    "description": "Title for setup walkthrough"
+  },
+  "stepXOfY": "ステップ {step} / {total}",
+  "@stepXOfY": {
+    "description": "Progress indicator showing current step",
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  }
+}

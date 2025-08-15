@@ -1,0 +1,135 @@
+{
+  "@@locale": "hi",
+  "appTitle": "Pickleizer",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "liveView": "लाइव व्यू",
+  "@liveView": {
+    "description": "Bottom navigation tab for live view"
+  },
+  "queue": "कतार",
+  "@queue": {
+    "description": "Bottom navigation tab for queue"
+  },
+  "facilities": "सुविधाएं",
+  "@facilities": {
+    "description": "Bottom navigation tab for facilities"
+  },
+  "players": "खिलाड़ी",
+  "@players": {
+    "description": "Bottom navigation tab for players"
+  },
+  "sessions": "सत्र",
+  "@sessions": {
+    "description": "Bottom navigation tab for sessions"
+  },
+  "settings": "सेटिंग्स",
+  "@settings": {
+    "description": "Settings menu item"
+  },
+  "language": "भाषा",
+  "@language": {
+    "description": "Language setting label"
+  },
+  "createFacility": "सुविधा बनाएं",
+  "@createFacility": {
+    "description": "Button to create a new facility"
+  },
+  "addCourt": "कोर्ट जोड़ें",
+  "@addCourt": {
+    "description": "Button to add a new court"
+  },
+  "addPlayer": "खिलाड़ी जोड़ें",
+  "@addPlayer": {
+    "description": "Button to add a new player"
+  },
+  "createSession": "सत्र बनाएं",
+  "@createSession": {
+    "description": "Button to create a new session"
+  },
+  "facilityName": "सुविधा का नाम",
+  "@facilityName": {
+    "description": "Label for facility name field"
+  },
+  "location": "स्थान",
+  "@location": {
+    "description": "Label for location field"
+  },
+  "playerName": "खिलाड़ी का नाम",
+  "@playerName": {
+    "description": "Label for player name field"
+  },
+  "skillLevel": "कौशल स्तर",
+  "@skillLevel": {
+    "description": "Label for skill level field"
+  },
+  "beginner": "शुरुआती",
+  "@beginner": {
+    "description": "Beginner skill level"
+  },
+  "intermediate": "मध्यम",
+  "@intermediate": {
+    "description": "Intermediate skill level"
+  },
+  "advanced": "उन्नत",
+  "@advanced": {
+    "description": "Advanced skill level"
+  },
+  "singles": "एकल",
+  "@singles": {
+    "description": "Singles game mode"
+  },
+  "doubles": "युगल",
+  "@doubles": {
+    "description": "Doubles game mode"
+  },
+  "kingOfHill": "पहाड़ी का राजा",
+  "@kingOfHill": {
+    "description": "King of Hill game mode"
+  },
+  "roundRobin": "राउंड रॉबिन",
+  "@roundRobin": {
+    "description": "Round Robin game mode"
+  },
+  "save": "सेव करें",
+  "@save": {
+    "description": "Save button"
+  },
+  "cancel": "रद्द करें",
+  "@cancel": {
+    "description": "Cancel button"
+  },
+  "delete": "हटाएं",
+  "@delete": {
+    "description": "Delete button"
+  },
+  "edit": "संपादित करें",
+  "@edit": {
+    "description": "Edit button"
+  },
+  "next": "अगला",
+  "@next": {
+    "description": "Next button"
+  },
+  "previous": "पिछला",
+  "@previous": {
+    "description": "Previous button"
+  },
+  "setupWalkthrough": "सेटअप गाइड",
+  "@setupWalkthrough": {
+    "description": "Title for setup walkthrough"
+  },
+  "stepXOfY": "चरण {step} का {total}",
+  "@stepXOfY": {
+    "description": "Progress indicator showing current step",
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  }
+}

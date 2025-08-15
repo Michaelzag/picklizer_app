@@ -1,0 +1,135 @@
+{
+  "@@locale": "ms",
+  "appTitle": "Pickleizer",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "liveView": "Paparan Langsung",
+  "@liveView": {
+    "description": "Bottom navigation tab for live view"
+  },
+  "queue": "Barisan",
+  "@queue": {
+    "description": "Bottom navigation tab for queue"
+  },
+  "facilities": "Kemudahan",
+  "@facilities": {
+    "description": "Bottom navigation tab for facilities"
+  },
+  "players": "Pemain",
+  "@players": {
+    "description": "Bottom navigation tab for players"
+  },
+  "sessions": "Sesi",
+  "@sessions": {
+    "description": "Bottom navigation tab for sessions"
+  },
+  "settings": "Tetapan",
+  "@settings": {
+    "description": "Settings menu item"
+  },
+  "language": "Bahasa",
+  "@language": {
+    "description": "Language setting label"
+  },
+  "createFacility": "Cipta Kemudahan",
+  "@createFacility": {
+    "description": "Button to create a new facility"
+  },
+  "addCourt": "Tambah Gelanggang",
+  "@addCourt": {
+    "description": "Button to add a new court"
+  },
+  "addPlayer": "Tambah Pemain",
+  "@addPlayer": {
+    "description": "Button to add a new player"
+  },
+  "createSession": "Cipta Sesi",
+  "@createSession": {
+    "description": "Button to create a new session"
+  },
+  "facilityName": "Nama Kemudahan",
+  "@facilityName": {
+    "description": "Label for facility name field"
+  },
+  "location": "Lokasi",
+  "@location": {
+    "description": "Label for location field"
+  },
+  "playerName": "Nama Pemain",
+  "@playerName": {
+    "description": "Label for player name field"
+  },
+  "skillLevel": "Tahap Kemahiran",
+  "@skillLevel": {
+    "description": "Label for skill level field"
+  },
+  "beginner": "Pemula",
+  "@beginner": {
+    "description": "Beginner skill level"
+  },
+  "intermediate": "Pertengahan",
+  "@intermediate": {
+    "description": "Intermediate skill level"
+  },
+  "advanced": "Lanjutan",
+  "@advanced": {
+    "description": "Advanced skill level"
+  },
+  "singles": "Perseorangan",
+  "@singles": {
+    "description": "Singles game mode"
+  },
+  "doubles": "Beregu",
+  "@doubles": {
+    "description": "Doubles game mode"
+  },
+  "kingOfHill": "Raja Bukit",
+  "@kingOfHill": {
+    "description": "King of Hill game mode"
+  },
+  "roundRobin": "Pusingan Robin",
+  "@roundRobin": {
+    "description": "Round Robin game mode"
+  },
+  "save": "Simpan",
+  "@save": {
+    "description": "Save button"
+  },
+  "cancel": "Batal",
+  "@cancel": {
+    "description": "Cancel button"
+  },
+  "delete": "Padam",
+  "@delete": {
+    "description": "Delete button"
+  },
+  "edit": "Edit",
+  "@edit": {
+    "description": "Edit button"
+  },
+  "next": "Seterusnya",
+  "@next": {
+    "description": "Next button"
+  },
+  "previous": "Sebelumnya",
+  "@previous": {
+    "description": "Previous button"
+  },
+  "setupWalkthrough": "Panduan Persediaan",
+  "@setupWalkthrough": {
+    "description": "Title for setup walkthrough"
+  },
+  "stepXOfY": "Langkah {step} daripada {total}",
+  "@stepXOfY": {
+    "description": "Progress indicator showing current step",
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  }
+}
