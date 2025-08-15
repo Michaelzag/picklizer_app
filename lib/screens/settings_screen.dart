@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../l10n/app_localizations.dart';
-import '../providers/providers.dart';
+import '../providers/enhanced_providers.dart';
 
-class SettingsScreen extends ConsumerWidget {
+class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<SettingsScreen> createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends ConsumerState<SettingsScreen> {
+  @override
+  Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     
     return Scaffold(
@@ -58,6 +63,7 @@ class SettingsScreen extends ConsumerWidget {
 
   Widget _buildLanguageSelector(BuildContext context, WidgetRef ref) {
     final currentLocale = ref.watch(localeProvider);
+    final currentLanguageCode = currentLocale?.languageCode ?? 'en';
     
     return Column(
       children: [
@@ -66,7 +72,7 @@ class SettingsScreen extends ConsumerWidget {
           'English',
           'en',
           '🇺🇸',
-          currentLocale?.languageCode ?? 'en',
+          currentLanguageCode,
           ref,
         ),
         _buildLanguageOption(
@@ -208,20 +214,24 @@ class SettingsScreen extends ConsumerWidget {
             )
           : null,
       selected: isSelected,
-      onTap: () {
-        ref.read(localeProvider.notifier).setLocale(Locale(languageCode));
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Language changed to $languageName'),
-            duration: const Duration(seconds: 2),
-            behavior: SnackBarBehavior.floating,
-            margin: const EdgeInsets.only(
-              bottom: 80,
-              left: 16,
-              right: 16,
+      onTap: () async {
+        // Use the StateNotifier's setLocale method
+        await ref.read(localeProvider.notifier).setLocale(Locale(languageCode));
+        
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Language changed to $languageName'),
+              duration: const Duration(seconds: 2),
+              behavior: SnackBarBehavior.floating,
+              margin: const EdgeInsets.only(
+                bottom: 80,
+                left: 16,
+                right: 16,
+              ),
             ),
-          ),
-        );
+          );
+        }
       },
     );
   }

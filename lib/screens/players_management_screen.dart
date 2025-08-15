@@ -194,7 +194,7 @@ class PlayersManagementScreen extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Skill Level: ${player.skillLevelDisplay}',
+                  'Modes: ${player.gameModesDisplay}',
                   style: const TextStyle(fontSize: 12),
                 ),
                 if (player.totalGamesPlayed > 0)
@@ -308,43 +308,102 @@ class PlayersManagementScreen extends ConsumerWidget {
 
   void _showEditPlayerDialog(BuildContext context, WidgetRef ref, Player player) {
     final nameController = TextEditingController(text: player.name);
-    int selectedSkillLevel = player.skillLevel;
+    bool playsSingles = player.playsSingles;
+    bool playsDoubles = player.playsDoubles;
+    bool playsKingOfHill = player.playsKingOfHill;
+    bool playsRoundRobin = player.playsRoundRobin;
 
     showDialog(
       context: context,
       builder: (context) => StatefulBuilder(
         builder: (context, setState) => AlertDialog(
           title: const Text('Edit Player'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextField(
-                controller: nameController,
-                decoration: const InputDecoration(
-                  labelText: 'Player Name',
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextField(
+                  controller: nameController,
+                  decoration: const InputDecoration(
+                    labelText: 'Player Name',
+                  ),
+                  textCapitalization: TextCapitalization.words,
                 ),
-                textCapitalization: TextCapitalization.words,
-              ),
-              const SizedBox(height: 16),
-              DropdownButtonFormField<int>(
-                value: selectedSkillLevel,
-                decoration: const InputDecoration(
-                  labelText: 'Skill Level',
+                const SizedBox(height: 16),
+                
+                // Game mode preferences
+                const Text(
+                  'Game Mode Preferences:',
+                  style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                items: const [
-                  DropdownMenuItem(value: 1, child: Text('Beginner')),
-                  DropdownMenuItem(value: 2, child: Text('Intermediate')),
-                  DropdownMenuItem(value: 3, child: Text('Advanced')),
-                ],
-                onChanged: (level) {
-                  if (level != null) {
+                const SizedBox(height: 8),
+                
+                CheckboxListTile(
+                  title: const Text('Singles'),
+                  value: playsSingles,
+                  onChanged: (value) {
                     setState(() {
-                      selectedSkillLevel = level;
+                      playsSingles = value ?? true;
                     });
-                  }
-                },
-              ),
-            ],
+                  },
+                  contentPadding: EdgeInsets.zero,
+                ),
+                CheckboxListTile(
+                  title: const Text('Doubles'),
+                  value: playsDoubles,
+                  onChanged: (value) {
+                    setState(() {
+                      playsDoubles = value ?? true;
+                    });
+                  },
+                  contentPadding: EdgeInsets.zero,
+                ),
+                CheckboxListTile(
+                  title: const Text('King of Hill'),
+                  value: playsKingOfHill,
+                  onChanged: (value) {
+                    setState(() {
+                      playsKingOfHill = value ?? true;
+                    });
+                  },
+                  contentPadding: EdgeInsets.zero,
+                ),
+                CheckboxListTile(
+                  title: const Text('Round Robin'),
+                  value: playsRoundRobin,
+                  onChanged: (value) {
+                    setState(() {
+                      playsRoundRobin = value ?? true;
+                    });
+                  },
+                  contentPadding: EdgeInsets.zero,
+                ),
+                
+                // Warning if no preferences selected
+                if (!playsSingles && !playsDoubles && !playsKingOfHill && !playsRoundRobin) ...[
+                  const SizedBox(height: 8),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: Colors.orange.withValues(alpha: 0.1),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: const Row(
+                      children: [
+                        Icon(Icons.warning, color: Colors.orange, size: 16),
+                        SizedBox(width: 8),
+                        Expanded(
+                          child: Text(
+                            'Player must be available for at least one game mode',
+                            style: TextStyle(fontSize: 12),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ],
+            ),
           ),
           actions: [
             TextButton(
@@ -355,11 +414,20 @@ class PlayersManagementScreen extends ConsumerWidget {
               onPressed: () async {
                 final name = nameController.text.trim();
                 if (name.isNotEmpty) {
+                  // Validate that at least one game mode is selected
+                  if (!playsSingles && !playsDoubles && !playsKingOfHill && !playsRoundRobin) {
+                    ref.read(messageProvider.notifier).showError('Player must be available for at least one game mode');
+                    return;
+                  }
+                  
                   try {
                     final storage = ref.read(enhancedStorageServiceProvider);
                     final updatedPlayer = player.copyWith(
                       name: name,
-                      skillLevel: selectedSkillLevel,
+                      playsSingles: playsSingles,
+                      playsDoubles: playsDoubles,
+                      playsKingOfHill: playsKingOfHill,
+                      playsRoundRobin: playsRoundRobin,
                     );
                     await storage.updatePlayer(updatedPlayer);
                     

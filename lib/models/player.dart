@@ -6,7 +6,13 @@ class Player {
   final String name;
   final String? phone; // NEW: Optional for future features
   final String? email; // NEW: Optional for future features
-  final int skillLevel; // NEW: Default skill level (1-3)
+  
+  // Game mode preferences (opt-out system - all enabled by default)
+  final bool playsSingles;
+  final bool playsDoubles;
+  final bool playsKingOfHill;
+  final bool playsRoundRobin;
+  
   final DateTime addedAt;
   int totalGamesPlayed; // NEW: Renamed from gamesPlayed for clarity
   int totalWins; // NEW: Renamed from wins for clarity
@@ -20,7 +26,10 @@ class Player {
     required this.name,
     this.phone,
     this.email,
-    this.skillLevel = 2, // Default to intermediate
+    this.playsSingles = true, // Default to all game modes enabled
+    this.playsDoubles = true,
+    this.playsKingOfHill = true,
+    this.playsRoundRobin = true,
     DateTime? addedAt,
     this.totalGamesPlayed = 0,
     this.totalWins = 0,
@@ -35,31 +44,47 @@ class Player {
 
   double get totalWinRate => totalGamesPlayed > 0 ? totalWins / totalGamesPlayed : 0.0;
 
-  String get skillLevelDisplay {
-    switch (skillLevel) {
-      case 1:
-        return 'Beginner';
-      case 2:
-        return 'Intermediate';
-      case 3:
-        return 'Advanced';
-      default:
-        return 'Intermediate';
-    }
+  // Game mode preference helpers
+  List<String> get enabledGameModes {
+    final List<String> modes = [];
+    if (playsSingles) modes.add('Singles');
+    if (playsDoubles) modes.add('Doubles');
+    if (playsKingOfHill) modes.add('King of Hill');
+    if (playsRoundRobin) modes.add('Round Robin');
+    return modes;
   }
+
+  String get gameModesDisplay {
+    final modes = enabledGameModes;
+    if (modes.isEmpty) return 'No game modes';
+    if (modes.length == 4) return 'All game modes';
+    return modes.join(', ');
+  }
+
+  bool get canPlayGameMode => playsSingles || playsDoubles || playsKingOfHill || playsRoundRobin;
 
   // Backward compatibility getters
   int get gamesPlayed => totalGamesPlayed;
   int get wins => totalWins;
   double get winRate => totalWinRate;
   bool get isSkipping => false; // This will be handled by session queue
+  
+  // Backward compatibility for skill level (deprecated)
+  @Deprecated('Use game mode preferences instead')
+  int get skillLevel => 2; // Always return intermediate for backward compatibility
+
+  @Deprecated('Use gameModesDisplay instead')
+  String get skillLevelDisplay => 'Intermediate'; // Deprecated, use gameModesDisplay instead
 
   Map<String, dynamic> toJson() => {
     'id': id,
     'name': name,
     'phone': phone,
     'email': email,
-    'skill_level': skillLevel,
+    'plays_singles': playsSingles ? 1 : 0,
+    'plays_doubles': playsDoubles ? 1 : 0,
+    'plays_king_of_hill': playsKingOfHill ? 1 : 0,
+    'plays_round_robin': playsRoundRobin ? 1 : 0,
     'added_at': addedAt.millisecondsSinceEpoch,
     'total_games_played': totalGamesPlayed,
     'total_wins': totalWins,
@@ -67,6 +92,8 @@ class Player {
     'created_at': createdAt.millisecondsSinceEpoch,
     'updated_at': updatedAt.millisecondsSinceEpoch,
     'sync_status': syncStatus.name,
+    // Backward compatibility
+    'skill_level': 2, // Always save as intermediate for backward compatibility
   };
 
   static Player fromJson(Map<String, dynamic> json) => Player(
@@ -74,7 +101,10 @@ class Player {
     name: json['name'],
     phone: json['phone'],
     email: json['email'],
-    skillLevel: json['skill_level'] ?? 2,
+    playsSingles: json['plays_singles'] == 1 || json['plays_singles'] == null, // Default to true if not set
+    playsDoubles: json['plays_doubles'] == 1 || json['plays_doubles'] == null, // Default to true if not set
+    playsKingOfHill: json['plays_king_of_hill'] == 1 || json['plays_king_of_hill'] == null, // Default to true if not set
+    playsRoundRobin: json['plays_round_robin'] == 1 || json['plays_round_robin'] == null, // Default to true if not set
     addedAt: DateTime.fromMillisecondsSinceEpoch(json['added_at']),
     totalGamesPlayed: json['total_games_played'] ?? json['games_played'] ?? 0, // Backward compatibility
     totalWins: json['total_wins'] ?? json['wins'] ?? 0, // Backward compatibility
@@ -92,7 +122,10 @@ class Player {
     String? name,
     String? phone,
     String? email,
-    int? skillLevel,
+    bool? playsSingles,
+    bool? playsDoubles,
+    bool? playsKingOfHill,
+    bool? playsRoundRobin,
     DateTime? addedAt,
     int? totalGamesPlayed,
     int? totalWins,
@@ -106,7 +139,10 @@ class Player {
       name: name ?? this.name,
       phone: phone ?? this.phone,
       email: email ?? this.email,
-      skillLevel: skillLevel ?? this.skillLevel,
+      playsSingles: playsSingles ?? this.playsSingles,
+      playsDoubles: playsDoubles ?? this.playsDoubles,
+      playsKingOfHill: playsKingOfHill ?? this.playsKingOfHill,
+      playsRoundRobin: playsRoundRobin ?? this.playsRoundRobin,
       addedAt: addedAt ?? this.addedAt,
       totalGamesPlayed: totalGamesPlayed ?? this.totalGamesPlayed,
       totalWins: totalWins ?? this.totalWins,

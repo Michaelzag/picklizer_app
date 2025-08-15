@@ -214,30 +214,6 @@ abstract class AppLocalizations {
   /// **'Player Name'**
   String get playerName;
 
-  /// Label for skill level field
-  ///
-  /// In en, this message translates to:
-  /// **'Skill Level'**
-  String get skillLevel;
-
-  /// Beginner skill level
-  ///
-  /// In en, this message translates to:
-  /// **'Beginner'**
-  String get beginner;
-
-  /// Intermediate skill level
-  ///
-  /// In en, this message translates to:
-  /// **'Intermediate'**
-  String get intermediate;
-
-  /// Advanced skill level
-  ///
-  /// In en, this message translates to:
-  /// **'Advanced'**
-  String get advanced;
-
   /// Singles game mode
   ///
   /// In en, this message translates to:
@@ -458,6 +434,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Error starting session: {error}'**
   String errorStartingSession(String error);
+
+  /// Button text to start the setup walkthrough
+  ///
+  /// In en, this message translates to:
+  /// **'Get Started'**
+  String get getStarted;
+
+  /// Tooltip for the get started button
+  ///
+  /// In en, this message translates to:
+  /// **'Start setup walkthrough'**
+  String get getStartedTooltip;
 }
 
 class _AppLocalizationsDelegate

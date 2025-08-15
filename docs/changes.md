@@ -144,3 +144,6 @@ Players are universal, sometimes players play at the same spots on different day
 Do you know what I mean by these changes? can you reason the implicatinos of this new direction?
 
 Also it looks like the other change of having players created before a session was not implemented yet. please review the previous changes in this documnet. 
+
+
+

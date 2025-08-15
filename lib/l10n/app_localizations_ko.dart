@@ -54,18 +54,6 @@ class AppLocalizationsKo extends AppLocalizations {
   String get playerName => '플레이어 이름';
 
   @override
-  String get skillLevel => '실력 수준';
-
-  @override
-  String get beginner => '초급';
-
-  @override
-  String get intermediate => '중급';
-
-  @override
-  String get advanced => '고급';
-
-  @override
   String get singles => '단식';
 
   @override
@@ -198,4 +186,10 @@ class AppLocalizationsKo extends AppLocalizations {
   String errorStartingSession(String error) {
     return '세션 시작 오류: $error';
   }
+
+  @override
+  String get getStarted => 'Get Started';
+
+  @override
+  String get getStartedTooltip => 'Start setup walkthrough';
 }

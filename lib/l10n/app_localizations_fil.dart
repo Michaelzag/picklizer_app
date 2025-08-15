@@ -54,18 +54,6 @@ class AppLocalizationsFil extends AppLocalizations {
   String get playerName => 'Pangalan ng Manlalaro';
 
   @override
-  String get skillLevel => 'Antas ng Kasanayan';
-
-  @override
-  String get beginner => 'Nagsisimula';
-
-  @override
-  String get intermediate => 'Katamtaman';
-
-  @override
-  String get advanced => 'Eksperto';
-
-  @override
   String get singles => 'Singles';
 
   @override
@@ -202,4 +190,10 @@ class AppLocalizationsFil extends AppLocalizations {
   String errorStartingSession(String error) {
     return 'May error sa pagsisimula ng sesyon: $error';
   }
+
+  @override
+  String get getStarted => 'Get Started';
+
+  @override
+  String get getStartedTooltip => 'Start setup walkthrough';
 }

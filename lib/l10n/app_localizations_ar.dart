@@ -54,18 +54,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get playerName => 'اسم اللاعب';
 
   @override
-  String get skillLevel => 'مستوى المهارة';
-
-  @override
-  String get beginner => 'مبتدئ';
-
-  @override
-  String get intermediate => 'متوسط';
-
-  @override
-  String get advanced => 'متقدم';
-
-  @override
   String get singles => 'فردي';
 
   @override
@@ -199,4 +187,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String errorStartingSession(String error) {
     return 'خطأ في بدء الجلسة: $error';
   }
+
+  @override
+  String get getStarted => 'Get Started';
+
+  @override
+  String get getStartedTooltip => 'Start setup walkthrough';
 }

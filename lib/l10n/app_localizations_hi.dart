@@ -54,18 +54,6 @@ class AppLocalizationsHi extends AppLocalizations {
   String get playerName => 'खिलाड़ी का नाम';
 
   @override
-  String get skillLevel => 'कौशल स्तर';
-
-  @override
-  String get beginner => 'शुरुआती';
-
-  @override
-  String get intermediate => 'मध्यम';
-
-  @override
-  String get advanced => 'उन्नत';
-
-  @override
   String get singles => 'एकल';
 
   @override
@@ -201,4 +189,10 @@ class AppLocalizationsHi extends AppLocalizations {
   String errorStartingSession(String error) {
     return 'सत्र शुरू करने में त्रुटि: $error';
   }
+
+  @override
+  String get getStarted => 'Get Started';
+
+  @override
+  String get getStartedTooltip => 'Start setup walkthrough';
 }

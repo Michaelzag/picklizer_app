@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/facility.dart';
@@ -180,7 +181,10 @@ class EnhancedPlayersNotifier extends StateNotifier<List<Player>> {
     required String name,
     String? phone,
     String? email,
-    int skillLevel = 2,
+    bool playsSingles = true,
+    bool playsDoubles = true,
+    bool playsKingOfHill = true,
+    bool playsRoundRobin = true,
   }) async {
     if (name.trim().isEmpty) return;
     
@@ -189,7 +193,10 @@ class EnhancedPlayersNotifier extends StateNotifier<List<Player>> {
       name: name.trim(),
       phone: phone,
       email: email,
-      skillLevel: skillLevel,
+      playsSingles: playsSingles,
+      playsDoubles: playsDoubles,
+      playsKingOfHill: playsKingOfHill,
+      playsRoundRobin: playsRoundRobin,
     );
     
     await storage.savePlayer(player);
@@ -471,6 +478,18 @@ class SessionQueueNotifier extends StateNotifier<List<QueueEntry>> {
     
     state = newQueue;
   }
+
+  Future<void> clearQueue() async {
+    final storage = ref.read(enhancedStorageServiceProvider);
+    final currentSession = ref.read(currentSessionProvider);
+    if (currentSession == null) return;
+    
+    // Clear from database
+    await storage.clearSessionQueue(currentSession.id);
+    
+    // Clear state
+    state = [];
+  }
 }
 
 // Undo Operations Provider
@@ -593,3 +612,29 @@ final sessionCheckedInPlayersProvider = Provider<List<Player>>((ref) {
   
   return players.where((player) => checkedInPlayerIds.contains(player.id)).toList();
 });
+
+// Locale Provider with Riverpod StateNotifier
+final localeProvider = StateNotifierProvider<LocaleNotifier, Locale?>((ref) {
+  return LocaleNotifier();
+});
+
+// Simple Locale Notifier - no async operations in constructor
+class LocaleNotifier extends StateNotifier<Locale?> {
+  LocaleNotifier() : super(null);
+
+  static const String _localeKey = 'selected_locale';
+
+  Future<void> setLocale(Locale locale) async {
+    // Update UI immediately
+    state = locale;
+    
+    // Persist asynchronously without blocking UI
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString(_localeKey, locale.languageCode);
+    } catch (e) {
+      // Handle error gracefully - UI already updated
+      debugPrint('Failed to save locale: $e');
+    }
+  }
+}

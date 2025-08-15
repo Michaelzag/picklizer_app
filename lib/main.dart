@@ -6,7 +6,7 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'config/theme_config.dart';
 import 'screens/main_navigation_screen.dart';
 import 'l10n/app_localizations.dart';
-import 'providers/providers.dart';
+import 'providers/enhanced_providers.dart';
 
 void main() {
   // Initialize SQLite for desktop/web platforms

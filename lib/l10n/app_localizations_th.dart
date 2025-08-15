@@ -54,18 +54,6 @@ class AppLocalizationsTh extends AppLocalizations {
   String get playerName => 'ชื่อผู้เล่น';
 
   @override
-  String get skillLevel => 'ระดับทักษะ';
-
-  @override
-  String get beginner => 'เริ่มต้น';
-
-  @override
-  String get intermediate => 'ปานกลาง';
-
-  @override
-  String get advanced => 'ขั้นสูง';
-
-  @override
   String get singles => 'เดี่ยว';
 
   @override
@@ -199,4 +187,10 @@ class AppLocalizationsTh extends AppLocalizations {
   String errorStartingSession(String error) {
     return 'เกิดข้อผิดพลาดในการเริ่มเซสชัน: $error';
   }
+
+  @override
+  String get getStarted => 'Get Started';
+
+  @override
+  String get getStartedTooltip => 'Start setup walkthrough';
 }

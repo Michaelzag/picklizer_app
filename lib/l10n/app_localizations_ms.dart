@@ -54,18 +54,6 @@ class AppLocalizationsMs extends AppLocalizations {
   String get playerName => 'Nama Pemain';
 
   @override
-  String get skillLevel => 'Tahap Kemahiran';
-
-  @override
-  String get beginner => 'Pemula';
-
-  @override
-  String get intermediate => 'Pertengahan';
-
-  @override
-  String get advanced => 'Lanjutan';
-
-  @override
   String get singles => 'Perseorangan';
 
   @override
@@ -201,4 +189,10 @@ class AppLocalizationsMs extends AppLocalizations {
   String errorStartingSession(String error) {
     return 'Ralat memulakan sesi: $error';
   }
+
+  @override
+  String get getStarted => 'Get Started';
+
+  @override
+  String get getStartedTooltip => 'Start setup walkthrough';
 }

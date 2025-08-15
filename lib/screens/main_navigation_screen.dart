@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../providers/enhanced_providers.dart';
 import '../l10n/app_localizations.dart';
-import '../widgets/common/global_message_widget.dart';
 import 'live_view_screen.dart';
 import 'on_deck_screen.dart';
 import 'facilities_screen.dart';
 import 'players_screen.dart';
 import 'sessions_screen.dart';
-import 'progressive_walkthrough_screen.dart';
+import 'walkthrough/walkthrough_coordinator.dart';
 import 'settings_screen.dart';
 
 class MainNavigationScreen extends ConsumerStatefulWidget {
@@ -64,19 +62,6 @@ class _MainNavigationScreenState extends ConsumerState<MainNavigationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final facilities = ref.watch(facilitiesProvider);
-    final players = ref.watch(enhancedPlayersProvider);
-    final currentSession = ref.watch(currentSessionProvider);
-    
-    // Check if we need to show walkthrough
-    final needsWalkthrough = facilities.isEmpty ||
-                           players.length < 2 ||
-                           currentSession == null;
-    
-    if (needsWalkthrough) {
-      return const ProgressiveWalkthroughScreen();
-    }
-    
     final l10n = AppLocalizations.of(context)!;
     
     return Scaffold(
@@ -84,41 +69,34 @@ class _MainNavigationScreenState extends ConsumerState<MainNavigationScreen> {
         title: Text(l10n.appTitle),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         actions: [
-          PopupMenuButton<String>(
-            icon: const Icon(Icons.settings),
-            tooltip: l10n.settings,
-            onSelected: (value) {
-              if (value == 'settings') {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const SettingsScreen(),
-                  ),
-                );
-              }
-            },
-            itemBuilder: (context) => [
-              PopupMenuItem<String>(
-                value: 'settings',
-                child: Row(
-                  children: [
-                    const Icon(Icons.language),
-                    const SizedBox(width: 12),
-                    Text(l10n.settings),
-                  ],
+          // Get Started button for new users
+          IconButton(
+            icon: const Icon(Icons.rocket_launch),
+            tooltip: l10n.getStartedTooltip,
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const WalkthroughCoordinator(),
                 ),
-              ),
-            ],
+              );
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.language),
+            tooltip: l10n.language,
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const SettingsScreen(),
+                ),
+              );
+            },
           ),
         ],
       ),
-      body: Stack(
-        children: [
-          IndexedStack(
-            index: _currentIndex,
-            children: _screens,
-          ),
-          const GlobalMessageWidget(),
-        ],
+      body: IndexedStack(
+        index: _currentIndex,
+        children: _screens,
       ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _currentIndex,

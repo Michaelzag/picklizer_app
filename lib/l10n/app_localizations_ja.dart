@@ -54,18 +54,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get playerName => 'プレイヤー名';
 
   @override
-  String get skillLevel => 'スキルレベル';
-
-  @override
-  String get beginner => '初心者';
-
-  @override
-  String get intermediate => '中級者';
-
-  @override
-  String get advanced => '上級者';
-
-  @override
   String get singles => 'シングルス';
 
   @override
@@ -198,4 +186,10 @@ class AppLocalizationsJa extends AppLocalizations {
   String errorStartingSession(String error) {
     return 'セッション開始エラー: $error';
   }
+
+  @override
+  String get getStarted => 'Get Started';
+
+  @override
+  String get getStartedTooltip => 'Start setup walkthrough';
 }

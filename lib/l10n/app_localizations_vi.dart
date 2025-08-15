@@ -54,18 +54,6 @@ class AppLocalizationsVi extends AppLocalizations {
   String get playerName => 'Tên Người Chơi';
 
   @override
-  String get skillLevel => 'Trình Độ';
-
-  @override
-  String get beginner => 'Mới Bắt Đầu';
-
-  @override
-  String get intermediate => 'Trung Bình';
-
-  @override
-  String get advanced => 'Nâng Cao';
-
-  @override
   String get singles => 'Đơn';
 
   @override
@@ -200,4 +188,10 @@ class AppLocalizationsVi extends AppLocalizations {
   String errorStartingSession(String error) {
     return 'Lỗi bắt đầu phiên: $error';
   }
+
+  @override
+  String get getStarted => 'Get Started';
+
+  @override
+  String get getStartedTooltip => 'Start setup walkthrough';
 }

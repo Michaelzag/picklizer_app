@@ -27,7 +27,7 @@ class SessionsScreen extends ConsumerWidget {
             ),
             SizedBox(height: 8),
             Text(
-              'Historical views of players and courts',
+              'Historical data',
               style: TextStyle(color: Colors.grey),
             ),
           ],

@@ -54,18 +54,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get playerName => '球员姓名';
 
   @override
-  String get skillLevel => '技能水平';
-
-  @override
-  String get beginner => '初学者';
-
-  @override
-  String get intermediate => '中级';
-
-  @override
-  String get advanced => '高级';
-
-  @override
   String get singles => '单打';
 
   @override
@@ -197,4 +185,10 @@ class AppLocalizationsZh extends AppLocalizations {
   String errorStartingSession(String error) {
     return '启动会话时出错：$error';
   }
+
+  @override
+  String get getStarted => 'Get Started';
+
+  @override
+  String get getStartedTooltip => 'Start setup walkthrough';
 }

@@ -54,18 +54,6 @@ class AppLocalizationsDe extends AppLocalizations {
   String get playerName => 'Spielername';
 
   @override
-  String get skillLevel => 'Fähigkeitsstufe';
-
-  @override
-  String get beginner => 'Anfänger';
-
-  @override
-  String get intermediate => 'Fortgeschritten';
-
-  @override
-  String get advanced => 'Experte';
-
-  @override
   String get singles => 'Einzel';
 
   @override
@@ -201,4 +189,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String errorStartingSession(String error) {
     return 'Fehler beim Starten der Sitzung: $error';
   }
+
+  @override
+  String get getStarted => 'Get Started';
+
+  @override
+  String get getStartedTooltip => 'Start setup walkthrough';
 }

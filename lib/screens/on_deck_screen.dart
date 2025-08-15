@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/enhanced_providers.dart';
-import '../models/player.dart';
 import '../models/queue_entry.dart';
 
 class OnDeckScreen extends ConsumerWidget {
@@ -9,167 +8,135 @@ class OnDeckScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final currentSession = ref.watch(currentSessionProvider);
     final queue = ref.watch(sessionQueueProvider);
+    final currentSession = ref.watch(currentSessionProvider);
     final players = ref.watch(enhancedPlayersProvider);
-    final undoOperations = ref.watch(undoOperationsProvider);
-
+    
     return Scaffold(
       appBar: AppBar(
         title: const Text('Queue'),
         centerTitle: true,
         actions: [
-          if (undoOperations.isNotEmpty)
+          if (queue.isNotEmpty)
             IconButton(
-              icon: const Icon(Icons.undo),
-              onPressed: () => _showUndoDialog(context, ref),
-              tooltip: 'Undo last action',
+              icon: const Icon(Icons.clear_all),
+              onPressed: () => _showClearQueueDialog(context, ref),
+              tooltip: 'Clear Queue',
             ),
         ],
       ),
       body: currentSession == null
-          ? _buildNoSessionState(context, ref)
-          : Column(
-              children: [
-                // Live matches section
-                _buildLiveMatchesSection(context, ref),
-                
-                const Divider(),
-                
-                // Queue section
-                Expanded(
-                  child: _buildQueueSection(context, ref, queue, players),
-                ),
-              ],
-            ),
+          ? _buildNoSessionState(context)
+          : queue.isEmpty
+              ? _buildEmptyQueueState(context)
+              : _buildQueueList(context, ref, queue, players),
     );
   }
 
-  Widget _buildNoSessionState(BuildContext context, WidgetRef ref) {
+  Widget _buildNoSessionState(BuildContext context) {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
-            Icons.play_circle_outline,
+            Icons.sports_tennis,
             size: 64,
             color: Theme.of(context).colorScheme.onSurfaceVariant,
           ),
           const SizedBox(height: 16),
           Text(
             'No Active Session',
-            style: Theme.of(context).textTheme.titleMedium,
+            style: Theme.of(context).textTheme.titleLarge,
           ),
           const SizedBox(height: 8),
-          const Text('Start a session to see the queue'),
-          const SizedBox(height: 16),
-          ElevatedButton(
-            onPressed: () => _showStartSessionDialog(context, ref),
-            child: const Text('Start Session'),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildLiveMatchesSection(BuildContext context, WidgetRef ref) {
-    // TODO: Get active matches from current session
-    // For now, show placeholder
-    return Container(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
           Text(
-            'Live Matches',
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
-          ),
-          const SizedBox(height: 8),
-          Card(
-            child: Padding(
-              padding: const EdgeInsets.all(12),
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.sports_tennis,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                  const SizedBox(width: 12),
-                  const Expanded(
-                    child: Text('No active matches'),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildQueueSection(BuildContext context, WidgetRef ref, List<QueueEntry> queue, List<Player> players) {
-    if (queue.isEmpty) {
-      return Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.queue,
-              size: 64,
+            'Start a session to see the player queue',
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
               color: Theme.of(context).colorScheme.onSurfaceVariant,
             ),
-            const SizedBox(height: 16),
-            Text(
-              'Queue is empty',
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-            const SizedBox(height: 8),
-            const Text('Check in players to add them to the queue'),
-          ],
-        ),
-      );
-    }
+          ),
+        ],
+      ),
+    );
+  }
 
+  Widget _buildEmptyQueueState(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.queue,
+            size: 64,
+            color: Theme.of(context).colorScheme.onSurfaceVariant,
+          ),
+          const SizedBox(height: 16),
+          Text(
+            'Queue is Empty',
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Check in players to see them in the queue',
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Theme.of(context).colorScheme.onSurfaceVariant,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildQueueList(BuildContext context, WidgetRef ref, List<QueueEntry> queue, List<dynamic> players) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
+        Container(
+          width: double.infinity,
           padding: const EdgeInsets.all(16),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          margin: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.primaryContainer,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Queue (${queue.length} players)',
+                'Player Queue',
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
+                  color: Theme.of(context).colorScheme.onPrimaryContainer,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
+              const SizedBox(height: 4),
               Text(
-                'Estimated order - may change',
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: Theme.of(context).colorScheme.onSurfaceVariant,
-                      fontStyle: FontStyle.italic,
-                    ),
+                '${queue.length} players waiting',
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: Theme.of(context).colorScheme.onPrimaryContainer,
+                ),
               ),
             ],
           ),
         ),
         Expanded(
           child: ReorderableListView.builder(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             itemCount: queue.length,
             onReorder: (oldIndex, newIndex) {
               ref.read(sessionQueueProvider.notifier).reorderQueue(oldIndex, newIndex);
             },
             itemBuilder: (context, index) {
-              final entry = queue[index];
-              final player = players.firstWhere((p) => p.id == entry.playerId);
+              final queueEntry = queue[index];
+              final player = players.firstWhere(
+                (p) => p.id == queueEntry.playerId,
+                orElse: () => null,
+              );
+              
+              if (player == null) return const SizedBox.shrink();
               
               return Card(
-                key: ValueKey(entry.id),
-                margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                key: ValueKey(queueEntry.id),
+                margin: const EdgeInsets.only(bottom: 8),
                 child: ListTile(
                   leading: CircleAvatar(
                     backgroundColor: Theme.of(context).colorScheme.primary,
@@ -185,61 +152,21 @@ class OnDeckScreen extends ConsumerWidget {
                     player.name,
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  subtitle: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  subtitle: Text('Position ${index + 1} in queue'),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text('Skill Level: ${player.skillLevelDisplay}'),
-                      if (entry.skipCount > 0)
-                        Text(
-                          'Skipped ${entry.skipCount} time${entry.skipCount > 1 ? 's' : ''}',
-                          style: TextStyle(
-                            color: Theme.of(context).colorScheme.onSurfaceVariant,
-                            fontSize: 12,
-                          ),
-                        ),
-                    ],
-                  ),
-                  trailing: PopupMenuButton<String>(
-                    onSelected: (value) {
-                      switch (value) {
-                        case 'soft_skip':
-                          _softSkipPlayer(ref, entry, player);
-                          break;
-                        case 'hard_skip':
-                          _hardSkipPlayer(ref, entry, player);
-                          break;
-                        case 'remove':
-                          _confirmRemovePlayer(context, ref, entry, player);
-                          break;
-                      }
-                    },
-                    itemBuilder: (context) => [
-                      const PopupMenuItem(
-                        value: 'soft_skip',
-                        child: ListTile(
-                          leading: Icon(Icons.pause),
-                          title: Text('Soft Skip'),
-                          subtitle: Text('Stay at front'),
-                          contentPadding: EdgeInsets.zero,
-                        ),
+                      IconButton(
+                        icon: const Icon(Icons.skip_next),
+                        onPressed: () => _skipPlayer(ref, queueEntry.playerId),
+                        tooltip: 'Skip Player',
                       ),
-                      const PopupMenuItem(
-                        value: 'hard_skip',
-                        child: ListTile(
-                          leading: Icon(Icons.skip_next),
-                          title: Text('Hard Skip'),
-                          subtitle: Text('Go to back'),
-                          contentPadding: EdgeInsets.zero,
-                        ),
+                      IconButton(
+                        icon: const Icon(Icons.remove_circle_outline),
+                        onPressed: () => _removeFromQueue(ref, queueEntry.playerId),
+                        tooltip: 'Remove from Queue',
                       ),
-                      const PopupMenuItem(
-                        value: 'remove',
-                        child: ListTile(
-                          leading: Icon(Icons.remove_circle, color: Colors.red),
-                          title: Text('Remove', style: TextStyle(color: Colors.red)),
-                          contentPadding: EdgeInsets.zero,
-                        ),
-                      ),
+                      const Icon(Icons.drag_handle),
                     ],
                   ),
                 ),
@@ -251,128 +178,35 @@ class OnDeckScreen extends ConsumerWidget {
     );
   }
 
-  void _showStartSessionDialog(BuildContext context, WidgetRef ref) {
-    final facilities = ref.read(facilitiesProvider);
-    
-    if (facilities.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please add a facility first')),
-      );
-      return;
-    }
+  void _skipPlayer(WidgetRef ref, String playerId) {
+    ref.read(sessionQueueProvider.notifier).hardSkipPlayer(playerId);
+  }
 
+  void _removeFromQueue(WidgetRef ref, String playerId) {
+    ref.read(sessionQueueProvider.notifier).removePlayerFromQueue(playerId);
+  }
+
+  void _showClearQueueDialog(BuildContext context, WidgetRef ref) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Start New Session'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Text('Select a facility to start a new session:'),
-            const SizedBox(height: 16),
-            ...facilities.map((facility) => ListTile(
-              title: Text(facility.name),
-              subtitle: facility.location != null ? Text(facility.location!) : null,
-              onTap: () {
-                ref.read(currentSessionProvider.notifier).startNewSession(
-                  facilityId: facility.id,
-                );
-                Navigator.pop(context);
-              },
-            )),
-          ],
-        ),
+        title: const Text('Clear Queue'),
+        content: const Text('Remove all players from the queue?'),
         actions: [
           TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void _softSkipPlayer(WidgetRef ref, QueueEntry entry, Player player) {
-    // Soft skip: keep at current position but mark as skipped
-    ref.read(sessionQueueProvider.notifier).softSkipPlayer(entry.playerId);
-    ScaffoldMessenger.of(ref.context).showSnackBar(
-      SnackBar(content: Text('${player.name} soft skipped (staying at front)')),
-    );
-  }
-
-  void _hardSkipPlayer(WidgetRef ref, QueueEntry entry, Player player) {
-    // Hard skip: move to back of queue
-    ref.read(sessionQueueProvider.notifier).hardSkipPlayer(entry.playerId);
-    ScaffoldMessenger.of(ref.context).showSnackBar(
-      SnackBar(content: Text('${player.name} moved to back of queue')),
-    );
-  }
-
-  void _confirmRemovePlayer(BuildContext context, WidgetRef ref, QueueEntry entry, Player player) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Remove from Queue'),
-        content: Text('Remove ${player.name} from the queue?'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () => Navigator.of(context).pop(),
             child: const Text('Cancel'),
           ),
           ElevatedButton(
             onPressed: () {
-              ref.read(sessionQueueProvider.notifier).removePlayerFromQueue(entry.playerId);
-              Navigator.pop(context);
+              ref.read(sessionQueueProvider.notifier).clearQueue();
+              Navigator.of(context).pop();
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.red,
               foregroundColor: Colors.white,
             ),
-            child: const Text('Remove'),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void _showUndoDialog(BuildContext context, WidgetRef ref) {
-    final operations = ref.read(undoOperationsProvider);
-    
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Undo Last Action'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text('Undo: ${operations.first.description}?'),
-            const SizedBox(height: 8),
-            Text(
-              operations.first.timeDisplay,
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: Theme.of(context).colorScheme.onSurfaceVariant,
-                  ),
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
-          ),
-          ElevatedButton(
-            onPressed: () async {
-              final success = await ref.read(undoOperationsProvider.notifier).undoLastOperation();
-              if (context.mounted) {
-                Navigator.pop(context);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(success ? 'Action undone' : 'Could not undo action'),
-                  ),
-                );
-              }
-            },
-            child: const Text('Undo'),
+            child: const Text('Clear All'),
           ),
         ],
       ),

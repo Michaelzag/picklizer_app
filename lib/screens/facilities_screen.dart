@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/enhanced_providers.dart';
 import '../models/facility.dart';
 import 'facility_detail_screen.dart';
+import 'facility_setup_screen.dart';
 
 class FacilitiesScreen extends ConsumerWidget {
   const FacilitiesScreen({super.key});
@@ -10,22 +11,26 @@ class FacilitiesScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final facilities = ref.watch(facilitiesProvider);
-    final isLoading = ref.watch(isLoadingProvider);
-
+    
     return Scaffold(
       appBar: AppBar(
         title: const Text('Facilities'),
         centerTitle: true,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: () => _navigateToAddFacility(context),
+            tooltip: 'Add Facility',
+          ),
+        ],
       ),
-      body: isLoading
-          ? const Center(child: CircularProgressIndicator())
-          : facilities.isEmpty
-              ? _buildEmptyState(context)
-              : _buildFacilitiesList(context, ref, facilities),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => _showAddFacilityDialog(context, ref),
-        tooltip: 'Add Facility',
-        child: const Icon(Icons.add),
+      body: facilities.isEmpty
+          ? _buildEmptyState(context)
+          : _buildFacilitiesList(context, ref, facilities),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () => _navigateToAddFacility(context),
+        icon: const Icon(Icons.add),
+        label: const Text('Add Facility'),
       ),
     );
   }
@@ -42,11 +47,22 @@ class FacilitiesScreen extends ConsumerWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            'No facilities configured',
-            style: Theme.of(context).textTheme.titleMedium,
+            'No Facilities Yet',
+            style: Theme.of(context).textTheme.titleLarge,
           ),
           const SizedBox(height: 8),
-          const Text('Tap the + button to add your first facility'),
+          Text(
+            'Add your first facility to get started',
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Theme.of(context).colorScheme.onSurfaceVariant,
+            ),
+          ),
+          const SizedBox(height: 24),
+          ElevatedButton.icon(
+            onPressed: () => _navigateToAddFacility(context),
+            icon: const Icon(Icons.add),
+            label: const Text('Add Facility'),
+          ),
         ],
       ),
     );
@@ -54,21 +70,18 @@ class FacilitiesScreen extends ConsumerWidget {
 
   Widget _buildFacilitiesList(BuildContext context, WidgetRef ref, List<Facility> facilities) {
     return ListView.builder(
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(16),
       itemCount: facilities.length,
       itemBuilder: (context, index) {
         final facility = facilities[index];
         return Card(
-          margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          margin: const EdgeInsets.only(bottom: 8),
           child: ListTile(
             leading: CircleAvatar(
               backgroundColor: Theme.of(context).colorScheme.primary,
-              child: Text(
-                facility.name[0].toUpperCase(),
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
+              child: Icon(
+                Icons.business,
+                color: Theme.of(context).colorScheme.onPrimary,
               ),
             ),
             title: Text(
@@ -77,149 +90,54 @@ class FacilitiesScreen extends ConsumerWidget {
             ),
             subtitle: facility.location != null
                 ? Text(facility.location!)
-                : const Text('No location specified'),
+                : const Text('No location set'),
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 IconButton(
                   icon: const Icon(Icons.edit),
-                  onPressed: () => _showEditFacilityDialog(context, ref, facility),
-                  tooltip: 'Edit facility',
+                  onPressed: () => _editFacility(context, ref, facility),
+                  tooltip: 'Edit Facility',
                 ),
                 IconButton(
                   icon: const Icon(Icons.delete),
-                  onPressed: () => _confirmDeleteFacility(context, ref, facility),
-                  color: Colors.red,
-                  tooltip: 'Delete facility',
+                  onPressed: () => _deleteFacility(context, ref, facility),
+                  tooltip: 'Delete Facility',
                 ),
               ],
             ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => FacilityDetailScreen(facilityId: facility.id),
-                ),
-              );
-            },
+            onTap: () => _navigateToFacilityDetail(context, facility.id),
           ),
         );
       },
     );
   }
 
-  void _showAddFacilityDialog(BuildContext context, WidgetRef ref) {
-    final nameController = TextEditingController();
-    final locationController = TextEditingController();
-
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Add Facility'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TextField(
-              controller: nameController,
-              autofocus: true,
-              decoration: const InputDecoration(
-                labelText: 'Facility Name',
-                hintText: 'e.g., Downtown Recreation Center',
-              ),
-              textCapitalization: TextCapitalization.words,
-            ),
-            const SizedBox(height: 16),
-            TextField(
-              controller: locationController,
-              decoration: const InputDecoration(
-                labelText: 'Location (Optional)',
-                hintText: 'e.g., 123 Main St, City, State',
-              ),
-              textCapitalization: TextCapitalization.words,
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              final name = nameController.text.trim();
-              if (name.isNotEmpty) {
-                ref.read(facilitiesProvider.notifier).addFacility(
-                      name: name,
-                      location: locationController.text.trim().isEmpty
-                          ? null
-                          : locationController.text.trim(),
-                    );
-                Navigator.pop(context);
-              }
-            },
-            child: const Text('Add'),
-          ),
-        ],
+  void _navigateToAddFacility(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const FacilitySetupScreen(),
       ),
     );
   }
 
-  void _showEditFacilityDialog(BuildContext context, WidgetRef ref, Facility facility) {
-    final nameController = TextEditingController(text: facility.name);
-    final locationController = TextEditingController(text: facility.location ?? '');
-
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Edit Facility'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TextField(
-              controller: nameController,
-              autofocus: true,
-              decoration: const InputDecoration(
-                labelText: 'Facility Name',
-              ),
-              textCapitalization: TextCapitalization.words,
-            ),
-            const SizedBox(height: 16),
-            TextField(
-              controller: locationController,
-              decoration: const InputDecoration(
-                labelText: 'Location (Optional)',
-              ),
-              textCapitalization: TextCapitalization.words,
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              final name = nameController.text.trim();
-              if (name.isNotEmpty) {
-                final updatedFacility = facility.copyWith(
-                  name: name,
-                  location: locationController.text.trim().isEmpty
-                      ? null
-                      : locationController.text.trim(),
-                );
-                ref.read(facilitiesProvider.notifier).updateFacility(updatedFacility);
-                Navigator.pop(context);
-              }
-            },
-            child: const Text('Save'),
-          ),
-        ],
+  void _navigateToFacilityDetail(BuildContext context, String facilityId) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => FacilityDetailScreen(facilityId: facilityId),
       ),
     );
   }
 
-  void _confirmDeleteFacility(BuildContext context, WidgetRef ref, Facility facility) {
+  void _editFacility(BuildContext context, WidgetRef ref, Facility facility) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => FacilitySetupScreen(facility: facility),
+      ),
+    );
+  }
+
+  void _deleteFacility(BuildContext context, WidgetRef ref, Facility facility) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -227,13 +145,16 @@ class FacilitiesScreen extends ConsumerWidget {
         content: Text('Are you sure you want to delete "${facility.name}"?'),
         actions: [
           TextButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () => Navigator.of(context).pop(),
             child: const Text('Cancel'),
           ),
           ElevatedButton(
             onPressed: () {
               ref.read(facilitiesProvider.notifier).removeFacility(facility.id);
-              Navigator.pop(context);
+              Navigator.of(context).pop();
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('${facility.name} deleted')),
+              );
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.red,

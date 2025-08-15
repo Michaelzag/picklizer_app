@@ -5,7 +5,9 @@ import '../providers/message_provider.dart';
 import '../models/player.dart';
 
 class PlayerSetupScreen extends ConsumerStatefulWidget {
-  const PlayerSetupScreen({super.key});
+  final Player? player;
+  
+  const PlayerSetupScreen({super.key, this.player});
 
   @override
   ConsumerState<PlayerSetupScreen> createState() => _PlayerSetupScreenState();
@@ -14,7 +16,12 @@ class PlayerSetupScreen extends ConsumerStatefulWidget {
 class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
-  int _selectedSkillLevel = 2; // 1=Beginner, 2=Intermediate, 3=Advanced
+  
+  // Game mode preferences (opt-out system - all enabled by default)
+  bool _playsSingles = true;
+  bool _playsDoubles = true;
+  bool _playsKingOfHill = true;
+  bool _playsRoundRobin = true;
 
   @override
   void dispose() {
@@ -137,32 +144,130 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
                   ),
                   const SizedBox(height: 16),
 
-                  // Skill level
+                  // Game mode preferences
                   Text(
-                    'Skill Level',
+                    'Game Mode Preferences',
                     style: Theme.of(context).textTheme.titleSmall?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
                   ),
                   const SizedBox(height: 8),
-                  DropdownButtonFormField<int>(
-                    value: _selectedSkillLevel,
-                    decoration: const InputDecoration(
-                      prefixIcon: Icon(Icons.star),
-                    ),
-                    items: const [
-                      DropdownMenuItem(value: 1, child: Text('Beginner')),
-                      DropdownMenuItem(value: 2, child: Text('Intermediate')),
-                      DropdownMenuItem(value: 3, child: Text('Advanced')),
-                    ],
-                    onChanged: (level) {
-                      if (level != null) {
-                        setState(() {
-                          _selectedSkillLevel = level;
-                        });
-                      }
-                    },
+                  Text(
+                    'Select which game modes this player wants to play (all enabled by default):',
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          color: Theme.of(context).colorScheme.onSurfaceVariant,
+                        ),
                   ),
+                  const SizedBox(height: 12),
+                  
+                  // Game type preferences
+                  Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Game Types:',
+                            style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                          ),
+                          CheckboxListTile(
+                            title: const Text('Singles'),
+                            subtitle: const Text('1 vs 1 matches'),
+                            value: _playsSingles,
+                            onChanged: (value) {
+                              setState(() {
+                                _playsSingles = value ?? true;
+                              });
+                            },
+                            contentPadding: EdgeInsets.zero,
+                          ),
+                          CheckboxListTile(
+                            title: const Text('Doubles'),
+                            subtitle: const Text('2 vs 2 matches'),
+                            value: _playsDoubles,
+                            onChanged: (value) {
+                              setState(() {
+                                _playsDoubles = value ?? true;
+                              });
+                            },
+                            contentPadding: EdgeInsets.zero,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  
+                  // Game format preferences
+                  Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Game Formats:',
+                            style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                          ),
+                          CheckboxListTile(
+                            title: const Text('King of the Hill'),
+                            subtitle: const Text('Winners stay, losers rotate'),
+                            value: _playsKingOfHill,
+                            onChanged: (value) {
+                              setState(() {
+                                _playsKingOfHill = value ?? true;
+                              });
+                            },
+                            contentPadding: EdgeInsets.zero,
+                          ),
+                          CheckboxListTile(
+                            title: const Text('Round Robin'),
+                            subtitle: const Text('All players rotate'),
+                            value: _playsRoundRobin,
+                            onChanged: (value) {
+                              setState(() {
+                                _playsRoundRobin = value ?? true;
+                              });
+                            },
+                            contentPadding: EdgeInsets.zero,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  
+                  // Warning if no preferences selected
+                  if (!_playsSingles && !_playsDoubles && !_playsKingOfHill && !_playsRoundRobin) ...[
+                    const SizedBox(height: 8),
+                    Container(
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: Colors.orange.withValues(alpha: 0.1),
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(color: Colors.orange.withValues(alpha: 0.3)),
+                      ),
+                      child: Row(
+                        children: [
+                          const Icon(Icons.warning, color: Colors.orange, size: 20),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: Text(
+                              'Player must be available for at least one game mode',
+                              style: TextStyle(
+                                color: Colors.orange.shade700,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                   const SizedBox(height: 24),
 
                   // Add player button
@@ -209,7 +314,7 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
                           ),
                         ),
                         title: Text(player.name),
-                        subtitle: Text('Skill: ${player.skillLevelDisplay}'),
+                        subtitle: Text('Game Modes: ${player.gameModesDisplay}'),
                         trailing: IconButton(
                           icon: const Icon(Icons.delete, color: Colors.red),
                           onPressed: () => _confirmDeletePlayer(player),
@@ -251,7 +356,10 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
       try {
         final player = Player(
           name: _nameController.text.trim(),
-          skillLevel: _selectedSkillLevel,
+          playsSingles: _playsSingles,
+          playsDoubles: _playsDoubles,
+          playsKingOfHill: _playsKingOfHill,
+          playsRoundRobin: _playsRoundRobin,
         );
         
         await storage.savePlayer(player);
@@ -259,7 +367,11 @@ class _PlayerSetupScreenState extends ConsumerState<PlayerSetupScreen> {
         // Clear form
         _nameController.clear();
         setState(() {
-          _selectedSkillLevel = 2; // Reset to intermediate
+          // Reset to all enabled (default)
+          _playsSingles = true;
+          _playsDoubles = true;
+          _playsKingOfHill = true;
+          _playsRoundRobin = true;
         });
         
         if (mounted) {

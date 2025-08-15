@@ -75,26 +75,6 @@
     "description": "Label for player name field"
   },
   
-  "skillLevel": "Skill Level",
-  "@skillLevel": {
-    "description": "Label for skill level field"
-  },
-  
-  "beginner": "Beginner",
-  "@beginner": {
-    "description": "Beginner skill level"
-  },
-  
-  "intermediate": "Intermediate",
-  "@intermediate": {
-    "description": "Intermediate skill level"
-  },
-  
-  "advanced": "Advanced",
-  "@advanced": {
-    "description": "Advanced skill level"
-  },
-  
   "singles": "Singles",
   "@singles": {
     "description": "Singles game mode"
@@ -349,5 +329,15 @@
         "example": "Database error"
       }
     }
+  },
+
+  "getStarted": "Get Started",
+  "@getStarted": {
+    "description": "Button text to start the setup walkthrough"
+  },
+
+  "getStartedTooltip": "Start setup walkthrough",
+  "@getStartedTooltip": {
+    "description": "Tooltip for the get started button"
   }
 }
